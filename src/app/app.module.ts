@@ -13,6 +13,9 @@ import { PressComponent } from './press/press.component';
 import { BecomeAPartnerComponent } from './become-a-partner/become-a-partner.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PartnersComponent } from './partners/partners.component';
+import { MyComponent } from './partners/my/my.component';
+import { ProfileComponent } from './partners/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +29,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PressComponent,
     BecomeAPartnerComponent,
     ContactUsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PartnersComponent,
+    MyComponent,
+    ProfileComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,11 @@
+<div class="container">
+    <h2><i>Welcome!</i></h2>
+    <div class="row">
+        <button [class]="my721 ? 'col-4 btnSelected' : 'col-4 btn'"  (click)="toggle('my721')">My 721</button>
+        <button [class]="profile ? 'col-4 btnSelected' : 'col-4 btn'" (click)="toggle('profile')">Profile</button>
+        <button [class]="contactUs ? 'col-4 btnSelected' : 'col-4 btn'" (click)="toggle('contactUs')">Contact Us</button>
+    </div>
+    <my-721 *ngIf="my721"></my-721>
+    <profile *ngIf="profile"></profile>
+    <app-contact-us *ngIf="contactUs" style="padding-top: -2.5%"></app-contact-us>
+</div>

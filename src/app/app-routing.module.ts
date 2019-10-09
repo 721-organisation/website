@@ -6,6 +6,7 @@ import { PressComponent } from './press/press.component';
 import { BecomeAPartnerComponent } from './become-a-partner/become-a-partner.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PartnersComponent } from './partners/partners.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'press', component: PressComponent},
   { path: 'become-a-partner', component: BecomeAPartnerComponent},
   { path: 'contact-us', component: ContactUsComponent},
+  { path: 'partners', component: PartnersComponent},
   { path: '**', component: PageNotFoundComponent}
 ];
 
