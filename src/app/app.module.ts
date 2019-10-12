@@ -1,5 +1,9 @@
+import { ApiHandlerService } from './api-handler.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,9 +40,15 @@ import { ProfileComponent } from './partners/profile/profile.component';
     ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
     ],
-  providers: [],
+  providers: [
+    ApiHandlerService,
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
