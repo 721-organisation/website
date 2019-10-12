@@ -27,4 +27,13 @@ export class ApiHandlerService {
     }
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
+
+  signUp (email: string, password: string): Observable<string>{
+    let finalUrl = this.url + "Users"
+    let body = {
+      "email": email,
+      "password": password
+    }
+    return this.http.post<string>(finalUrl, body, this.httpOptions);
+  }
 }

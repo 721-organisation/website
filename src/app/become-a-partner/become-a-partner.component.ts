@@ -11,13 +11,20 @@ import { FormsModule, FormGroup, ReactiveFormsModule, Validators, FormBuilder } 
 })
 export class BecomeAPartnerComponent implements OnInit {
   signInForm: FormGroup;
-
+  signUpForm: FormGroup;
+  errorText: string;
+  signUpErrorText: string;
 
   constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private router: Router, fb: FormBuilder) { 
     this.signInForm = fb.group({
       email: ["", Validators.required],
       password: ["", Validators.required]
   });
+  this.signUpForm = fb.group({
+    email: ["", Validators.required],
+    password: ["", Validators.required],
+    confirmPassword: ["", Validators.required]
+});
   }
   onSignIn(data) {
     let email = data.email;
@@ -26,10 +33,37 @@ export class BecomeAPartnerComponent implements OnInit {
     this.apiHandler
     .login(email, password).subscribe(
       res => {
-      let authorization = JSON.parse(JSON.stringify(res)).id;
-      this.CookieService.set('authorization-token', authorization);
-      this.router.navigate(['/partners']);
+          let authorization = JSON.parse(JSON.stringify(res)).id;
+          this.CookieService.set('authorization-token', authorization);
+          this.router.navigate(['/partners']);
+    },
+    err => {
+      this.errorText = "Incorrect email or password";
     });
+  }
+
+  onSignUp(data){
+    let email = data.email;
+    let password = data.password;
+    let confirmPassword = data.confirmPassword;
+    if(password === confirmPassword){
+      this.apiHandler.signUp(email, password).subscribe(
+        res => {
+          this.apiHandler
+          .login(email, password).subscribe(
+            result => {
+                let authorization = JSON.parse(JSON.stringify(result)).id;
+                this.CookieService.set('authorization-token', authorization);
+                this.router.navigate(['/partners']);
+          });
+        },
+        err => {
+          this.signUpErrorText = "Signup failed";
+        }
+      );
+    }else{
+      this.signUpErrorText = "Password and confirm password";
+    }
   }
   ngOnInit() {
     if((this.CookieService.get('authorization-token'))){

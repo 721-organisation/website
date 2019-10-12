@@ -17,21 +17,23 @@
                 <div class="form-group">
                     <input formControlName="password" type="password" class="form-control" id="signInPassword" placeholder="Password">
                 </div>
+                <p>{{errorText}}</p>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             <hr>
             <h3>Sign Up</h3>
-            <form>
+            <form [formGroup]="signUpForm" (ngSubmit)="onSignUp(signUpForm.value)">
                 <div class="form-group">
-                    <input type="email" class="form-control" id="signUpEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input formControlName="email"  type="email" class="form-control" id="signUpEmail" aria-describedby="emailHelp" placeholder="Enter email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
-                        <input type="password" class="form-control" id="signUpPassword" placeholder="Password">
+                        <input formControlName="password" type="password" class="form-control" id="signUpPassword" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="signUpConfirmPassword" placeholder="Confirm Password">
+                    <input formControlName="confirmPassword" type="password" class="form-control" id="signUpConfirmPassword" placeholder="Confirm Password">
                 </div>
+                <p>{{signUpErrorText}}</p>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
