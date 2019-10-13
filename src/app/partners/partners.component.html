@@ -1,5 +1,7 @@
 <div class="container">
-    <h2><i>Welcome!</i></h2><a (click)="signOut()"><p>Sign out</p></a>
+    <div class="row">
+        <h2 class="col-6"><i>Welcome!</i></h2><a class="col-6 signOut" (click)="signOut()"><p>Sign out</p></a>
+    </div>
     <div class="row">
         <button [class]="my721 ? 'col-4 btnSelected' : 'col-4 btn'"  (click)="toggle('my721')">My 721</button>
         <button [class]="profile ? 'col-4 btnSelected' : 'col-4 btn'" (click)="toggle('profile')">Profile</button>

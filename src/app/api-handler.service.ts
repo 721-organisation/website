@@ -36,4 +36,9 @@ export class ApiHandlerService {
     }
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
+
+  count (): Observable<string>{
+    let finalUrl = this.url + "EventProfiles/count"
+    return this.http.get<string>(finalUrl);
+  }
 }
