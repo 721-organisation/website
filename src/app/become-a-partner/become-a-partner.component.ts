@@ -33,9 +33,12 @@ export class BecomeAPartnerComponent implements OnInit {
     this.apiHandler
     .login(email, password).subscribe(
       res => {
-          let authorization = JSON.parse(JSON.stringify(res)).id;
-          this.CookieService.set('authorization-token', authorization);
-          this.router.navigate(['/partners']);
+        let authorization = JSON.parse(JSON.stringify(res)).id;
+        let userId = JSON.parse(JSON.stringify(res)).userId;
+        this.CookieService.set('authorization-token', authorization);
+        this.CookieService.set('email', email);
+        this.CookieService.set('user-id', userId);
+        this.router.navigate(['/partners']);
     },
     err => {
       this.errorText = "Incorrect email or password";
@@ -53,7 +56,10 @@ export class BecomeAPartnerComponent implements OnInit {
           .login(email, password).subscribe(
             result => {
                 let authorization = JSON.parse(JSON.stringify(result)).id;
+                let userId = JSON.parse(JSON.stringify(result)).userId;
                 this.CookieService.set('authorization-token', authorization);
+                this.CookieService.set('email', email);
+                this.CookieService.set('user-id', userId);
                 this.router.navigate(['/partners']);
           });
         },
