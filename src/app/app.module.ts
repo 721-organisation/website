@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PartnersComponent } from './partners/partners.component';
 import { MyComponent } from './partners/my/my.component';
 import { ProfileComponent } from './partners/profile/profile.component';
+import { AddListingComponent } from './partners/add-listing/add-listing.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProfileComponent } from './partners/profile/profile.component';
     PageNotFoundComponent,
     PartnersComponent,
     MyComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddListingComponent
     ],
   imports: [
     BrowserModule,

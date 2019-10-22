@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./my.component.less']
 })
 export class MyComponent implements OnInit {
-
+  addListingDisplay = false;
   headElements = ['Name', 'Date', 'Status'];
   constructor(private CookieService: CookieService, private Router: Router, private ApiHandlerService: ApiHandlerService) { }
   authorization_token = "";
@@ -26,6 +26,10 @@ export class MyComponent implements OnInit {
         this.requestedEvents = JSON.parse(JSON.stringify(res));
       }
     );
+  }
+
+  toggleAddListing() {
+    this.addListingDisplay = !this.addListingDisplay;
   }
 
 }

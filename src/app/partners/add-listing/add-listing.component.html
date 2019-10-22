@@ -1,0 +1,47 @@
+<h2>New Listing</h2>
+<p>Please fill in this form with all the required information. Once your event has been submitted it will be sent to our team for review.</p>
+<form [formGroup]="addListingForm" (ngSubmit)="addListing(addListingForm.value)">
+    <div class="row">
+        <div class="form-group col-6">
+            <input formControlName="venueName"  type="text" class="form-control" id="venueName" placeholder="Venue name">
+        </div>
+        <div class="form-group col-6">
+            <input formControlName="venueAddress" type="text" class="form-control" id="venueAddress" placeholder="Venue address">
+        </div>
+    </div>
+    <div class="row">
+            <div class="form-group col-6">
+                <input formControlName="eventName"  type="text" class="form-control" id="eventName" placeholder="Event name">
+            </div>
+            <div class="form-group col-6">
+                <input formControlName="eventDescription" type="text" class="form-control" id="eventDescription" placeholder="Event Description">
+            </div>
+        </div>
+        <div class="row">
+                <div class="form-group col-6">
+                    <input formControlName="eventLink"  type="text" class="form-control" id="eventLink" placeholder="Event link">
+                </div>
+                <div class="form-group col-6">
+                    <input formControlName="eventImageUrl" type="text" class="form-control" id="eventImageUrl" aria-describedby="imageUrlHelp" placeholder="Event image url">
+                    <small id="imageUrlHelp" class="form-text text-muted">Post a link to only the image and not a website containing the image.</small>
+
+                </div>
+            </div> 
+            <div class="row">
+                    <div class="form-group col-6">
+                        <input formControlName="eventDate"  type="date" class="form-control" id="eventDate" placeholder="Event date">
+                    </div>
+                    <div class="form-group col-6">
+                        <input formControlName="eventTime" type="time" class="form-control" id="eventTime" placeholder="Event time">
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="form-group col-6">
+                            <input formControlName="eventPrice"  type="text" class="form-control" id="eventDate" placeholder="Event price">
+                        </div>
+                        <div class="form-group col-6">
+                            <input formControlName="eventMinAge" type="text" class="form-control" id="eventTime" placeholder="Event minmum age">
+                        </div>
+                    </div>              
+    <button type="submit" class="btn btn-primary col-12">Submit</button>
+</form>

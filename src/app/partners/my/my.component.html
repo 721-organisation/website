@@ -1,4 +1,5 @@
-<button class="btn">+ Add Listing</button>
+<button class="btn" (click)="toggleAddListing()">+ Add Listing</button>
+<add-listing *ngIf="addListingDisplay"></add-listing>
 <table class="table" mdbTable>
         <thead>
           <tr>

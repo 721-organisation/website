@@ -51,7 +51,7 @@ export class ApiHandlerService {
   }
 
   createPartner (access_token: string, id: string): Observable<string>{
-    let finalUrl = "Partners?access_token="+access_token;
+    let finalUrl = this.url + "Partners?access_token="+access_token;
     let body = {
       "id": id
     }
@@ -69,6 +69,16 @@ export class ApiHandlerService {
   getUserInfoFromId (access_token: string, id: string): Observable<string>{
     let finalUrl = this.url + "Users/"+id;
     finalUrl = "?access_token=" + access_token;
+    return this.http.get<string>(finalUrl);
+  }
+
+  addListing(access_token: string, body: Object): Observable<string>{
+    let finalUrl = this.url +  "requestedEvents?access_token="+access_token;
+    return this.http.post<string>(finalUrl, body, this.httpOptions);
+  }
+
+  getLocationInformation(address: string): Observable<any>{
+    let finalUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA7MxC0c6PPV6HXw5lTmcN_5dW-I84MRbQ";
     return this.http.get<string>(finalUrl);
   }
 }
