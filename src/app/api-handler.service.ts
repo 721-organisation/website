@@ -76,7 +76,10 @@ export class ApiHandlerService {
     let finalUrl = this.url +  "requestedEvents?access_token="+access_token;
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
-
+  editPartnerInformation(access_token: string,userId: string, body: Object): Observable<string>{
+    let finalUrl = this.url + "Partners/update?where=%7B%22userId%22%3A%22"+userId+"%22%7D&access_token="+access_token;
+    return this.http.post<string>(finalUrl, body, this.httpOptions);
+  }
   getLocationInformation(address: string): Observable<any>{
     let finalUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA7MxC0c6PPV6HXw5lTmcN_5dW-I84MRbQ";
     return this.http.get<string>(finalUrl);
