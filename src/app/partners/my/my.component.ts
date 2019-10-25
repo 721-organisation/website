@@ -24,6 +24,9 @@ export class MyComponent implements OnInit {
       res => {
         console.log(res);
         this.requestedEvents = JSON.parse(JSON.stringify(res));
+      },
+      err => {
+        // On Failure
       }
     );
   }

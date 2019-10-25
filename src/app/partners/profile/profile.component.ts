@@ -48,6 +48,9 @@ export class ProfileComponent implements OnInit {
         this.companyName = data.companyName;
         this.location = data.Location;
         this.typeOfService = data.typeOfService;
+      },
+      err => {
+        // On Failure
       }
     );
   }
@@ -58,7 +61,14 @@ export class ProfileComponent implements OnInit {
       "companyName" : newCompanyName
     };
     console.log(body);
-    this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe();
+    this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe(
+      res =>{
+        // On Success
+      },
+      err => {
+        // On Failure
+      }
+    );
   }
 
   editLocation(data) {
@@ -66,7 +76,14 @@ export class ProfileComponent implements OnInit {
     let body = {
       "Location" : newLocation
     };
-    this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe();
+    this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe(
+      res =>{
+        // On Success
+      },
+      err => {
+        // On Failure
+      }
+    );
   }
 
   editTypeOfService(data) {
@@ -74,12 +91,26 @@ export class ProfileComponent implements OnInit {
     let body = {
       "typeOfService" : newTypeOfService
     };
-    this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe();
+    this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe(
+      res =>{
+        // On Success
+      },
+      err => {
+        // On Failure
+      }
+    );
   }
 
   changePassword(data){
     if(data.newPassword === data.confirmNewPassword){
-      this.ApiHandlerService.changePassword(this.authorization_token, data.currentPassword, data.newPassword).subscribe();
+      this.ApiHandlerService.changePassword(this.authorization_token, data.currentPassword, data.newPassword).subscribe(
+        res =>{
+          // On Success
+        },
+        err => {
+          // On Failure
+        }
+      );
     }
   }
 
