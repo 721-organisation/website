@@ -30,6 +30,9 @@ export class PartnersComponent implements OnInit {
         this.companyName = data.companyName;
         this.location = data.Location;
         this.typeOfService = data.typeOfService;
+      },
+      err => {
+        this.Router.navigate(['/become-a-partner']);
       }
     );
   }
