@@ -1,0 +1,39 @@
+<div class="container">
+    <h1>Team Webportal</h1>
+    <div class="row">
+        <button [class]="pending ? 'col-4 btnSelected' : 'col-4 btn'"  (click)="toggle('pending')">Pending</button>
+        <button [class]="accepted ? 'col-4 btnSelected' : 'col-4 btn'" (click)="toggle('accepted')">Accepted</button>
+        <button [class]="rejected ? 'col-4 btnSelected' : 'col-4 btn'" (click)="toggle('rejected')">Rejected</button>
+    </div>
+    <ul>
+    <li *ngFor="let requestedEvent of requestedEvents">
+        <div class="row">
+        <div class="col-8">
+        <h3>{{requestedEvent.name}}</h3>
+        <p>{{requestedEvent.eventSourceId}}</p>
+        <div class="row">
+            <p class="col-6">{{requestedEvent.venueName}}</p>
+            <p class="col-3">{{requestedEvent.venueLat}}</p>
+            <p class="col-3">{{requestedEvent.venueLong}}</p>
+        </div>
+        <a href={{requestedEvent.link}}>{{requestedEvent.link}}</a>
+        <p>{{requestedEvent.description}}</p>
+        <div class="row">
+            <p class="col-3">{{requestedEvent.date}}</p>
+            <p class="col-3">{{requestedEvent.time}}</p>
+            <p class="col-3">{{requestedEvent.minAge}}</p>
+        </div>
+        <p>{{requestedEvent.email}}</p>
+        </div>
+        <div class="col-4">
+                <img src={{requestedEvent.image}}>
+        </div>
+        </div>
+        <div *ngIf="pending" class="row acceptReject">
+            <button class="btn btn-success col-6" (click)="accept(requestedEvent.id, requestedEvent)">Accept</button>
+            <button class="btn btn-danger col-6" (click)="reject(requestedEvent.id)">Reject</button>
+        </div>
+        <hr>
+    </li>
+    </ul>
+</div>

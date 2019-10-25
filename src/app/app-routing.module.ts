@@ -7,6 +7,7 @@ import { BecomeAPartnerComponent } from './become-a-partner/become-a-partner.com
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PartnersComponent } from './partners/partners.component';
+import { TeamWebportalComponent } from './team-webportal/team-webportal.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'become-a-partner', component: BecomeAPartnerComponent},
   { path: 'contact-us', component: ContactUsComponent},
   { path: 'partners', component: PartnersComponent},
+  { path: 'team-webportal', component: TeamWebportalComponent},
   { path: '**', component: PageNotFoundComponent}
 ];
 

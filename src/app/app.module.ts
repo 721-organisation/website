@@ -22,6 +22,7 @@ import { PartnersComponent } from './partners/partners.component';
 import { MyComponent } from './partners/my/my.component';
 import { ProfileComponent } from './partners/profile/profile.component';
 import { AddListingComponent } from './partners/add-listing/add-listing.component';
+import { TeamWebportalComponent } from './team-webportal/team-webportal.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AddListingComponent } from './partners/add-listing/add-listing.componen
     PartnersComponent,
     MyComponent,
     ProfileComponent,
-    AddListingComponent
+    AddListingComponent,
+    TeamWebportalComponent
     ],
   imports: [
     BrowserModule,

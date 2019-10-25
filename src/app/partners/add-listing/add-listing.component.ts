@@ -35,7 +35,7 @@ export class AddListingComponent implements OnInit {
     this.email = this.CookieService.get('email');  }
 
   addListing(data){
-    this.apiHandler.getLocationInformation('10 Downing Street').subscribe(
+    this.apiHandler.getLocationInformation(data.venueAddress).subscribe(
         latLng=>{
           let addressLatLong = latLng.results[0].geometry.location;
           let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";

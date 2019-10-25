@@ -98,6 +98,32 @@ export class ApiHandlerService {
 
     return this.http.post<string>(finalUrl, body.toString(), newHttpOptions);
   }
+
+  getRequestedEvents(access_token: string, status: string): Observable<string>{
+    let finalUrl = this.url + "RequestedEvents?filter=%7B%22where%22%3A%7B%22status%22%3A%22"+status+"%22%7D%7D&access_token="+access_token;
+    return this.http.get<string>(finalUrl);
+  }
+
+  rejectRequestedEvent(access_token: string, id: string): Observable<string>{
+    let finalUrl = this.url + "requestedEvents/update?where=%7B%22id%22%3A%22"+id+"%22%7D&access_token="+access_token;
+    let body = {
+      "status":"Rejected"
+      }
+    return this.http.post<string>(finalUrl, body, this.httpOptions);
+  }
+
+  acceptRequestedEvent(access_token: string, id: string): Observable<string>{
+    let finalUrl = this.url + "requestedEvents/update?where=%7B%22id%22%3A%22"+id+"%22%7D&access_token="+access_token;
+    let body = {
+      "status":"Accepted"
+      }
+    return this.http.post<string>(finalUrl, body, this.httpOptions);   
+  }
+
+  addEvent(access_token: string, event: object): Observable<string>{
+    let finalUrl = this.url + "events?access_token="+access_token;
+    return this.http.post<string>(finalUrl, event, this.httpOptions);
+  }
   getLocationInformation(address: string): Observable<any>{
     let finalUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA7MxC0c6PPV6HXw5lTmcN_5dW-I84MRbQ";
     return this.http.get<string>(finalUrl);
