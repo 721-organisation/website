@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   editCompanyNameForm: FormGroup;
   editLocationForm: FormGroup;
   editTypeOfServiceForm: FormGroup;
+  changePasswordForm: FormGroup;
 
   constructor(private CookieService: CookieService, private Router: Router, private ApiHandlerService: ApiHandlerService, fb: FormBuilder) { 
     this.editCompanyNameForm = fb.group({
@@ -29,6 +30,11 @@ export class ProfileComponent implements OnInit {
     });
     this.editTypeOfServiceForm = fb.group({
       typeOfService: ["", Validators.required]
+    });
+    this.changePasswordForm = fb.group({
+      currentPassword: ["", Validators.required],
+      newPassword: ["", Validators.required],
+      confirmNewPassword: ["", Validators.required]
     });
   }
 
@@ -69,6 +75,12 @@ export class ProfileComponent implements OnInit {
       "typeOfService" : newTypeOfService
     };
     this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe();
+  }
+
+  changePassword(data){
+    if(data.newPassword === data.confirmNewPassword){
+      this.ApiHandlerService.changePassword(this.authorization_token, data.currentPassword, data.newPassword).subscribe();
+    }
   }
 
 }

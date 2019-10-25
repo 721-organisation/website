@@ -33,16 +33,23 @@
                 </div>
             </form>
 <hr>
+<form [formGroup]="changePasswordForm" (ngSubmit)="changePassword(changePasswordForm.value)">
+    <h2>Change Password</h2>
 <div class="row">
-    <div class="col-6"><p><b>Change password</b></p></div>
-    <input class="col-6" type="password">
+    <div class="col-6"><p><b>Current password</b></p></div>
+    <input class="col-6" formControlName="currentPassword" type="password">
 </div>
 <div class="row">
-    <div class="col-6"><p><b>Confirm change password</b></p></div>
-    <input class="col-6" type="password">
+    <div class="col-6"><p><b>New password</b></p></div>
+    <input class="col-6" formControlName="newPassword" type="password">
 </div>
+<div class="row">
+        <div class="col-6"><p><b>Confirm new password</b></p></div>
+        <input class="col-6" formControlName="confirmNewPassword" type="password">
+    </div>
 <div class="row">
     <div class="col-6"></div>
-    <button class="col-6 btn-success">Confirm</button>
+    <button class="col-6 btn-success" type="submit">Confirm</button>
 </div>
+</form>
 </div>

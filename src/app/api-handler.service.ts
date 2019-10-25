@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -79,6 +79,24 @@ export class ApiHandlerService {
   editPartnerInformation(access_token: string,userId: string, body: Object): Observable<string>{
     let finalUrl = this.url + "Partners/update?where=%7B%22userId%22%3A%22"+userId+"%22%7D&access_token="+access_token;
     return this.http.post<string>(finalUrl, body, this.httpOptions);
+  }
+  changePassword(access_token: string, oldPasswordS: string, newPasswordS: string): Observable<string>{
+    let finalUrl = this.url + "Users/change-password?access_token="+access_token;
+    let newHttpOptions = {
+      headers: new HttpHeaders({
+        'cache-control': 'no-cache',
+        'Connection': 'keep-alive',
+        'accept-encoding': 'gzip, deflate',
+        'Accept': '*/*',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    };
+
+    const body = new HttpParams()
+    .set('oldPassword', oldPasswordS)
+    .set('newPassword', newPasswordS);
+
+    return this.http.post<string>(finalUrl, body.toString(), newHttpOptions);
   }
   getLocationInformation(address: string): Observable<any>{
     let finalUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA7MxC0c6PPV6HXw5lTmcN_5dW-I84MRbQ";
