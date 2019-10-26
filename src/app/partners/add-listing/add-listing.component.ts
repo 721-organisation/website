@@ -1,3 +1,4 @@
+import { MyComponent } from './../my/my.component';
 import { ApiHandlerService } from './../../api-handler.service';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
@@ -65,6 +66,7 @@ export class AddListingComponent implements OnInit {
           this.apiHandler.addListing(this.authorization_token, body).subscribe(
             res => {
               console.log("Success");
+              this.router.navigate(['/become-a-partner']);
             },
             err => {
               console.log(err);    
