@@ -15,6 +15,7 @@ export class MyComponent implements OnInit {
   authorization_token = "";
   email = "";
   userId = "";
+  viewEvent = "";
   requestedEvents = [];
   ngOnInit() {
     this.authorization_token = this.CookieService.get('authorization-token');
@@ -30,9 +31,23 @@ export class MyComponent implements OnInit {
       }
     );
   }
-
+  toggleView(id) {
+    if(id != this.viewEvent){
+      this.viewEvent = id;
+    }else{
+      this.viewEvent = "";
+    }
+  }
   toggleAddListing() {
     this.addListingDisplay = !this.addListingDisplay;
   }
-
+  removeEvent(id) {
+    this.ApiHandlerService.deleteRequestedEventFromId(this.authorization_token, id).subscribe(
+      res => {
+        this.Router.navigate(['/become-a-partner']);
+      },err => {
+        // Error
+      }
+    );
+  }
 }

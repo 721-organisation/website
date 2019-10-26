@@ -1,9 +1,37 @@
-<button class="btn" (click)="toggleAddListing()">+ Add Listing</button>
+<button class="btn addListing" (click)="toggleAddListing()">+ Add Listing</button>
 <add-listing *ngIf="addListingDisplay"></add-listing>
+<div *ngFor="let el of requestedEvents">
+<div *ngIf="viewEvent == el.id">
+        <div class="row">
+            <div class="col-8">
+                <h3>{{el.name}}</h3>
+                <p>{{el.eventSourceId}}</p>
+                <div class="row">
+                    <p class="col-6">{{el.venueName}}</p>
+                    <p class="col-3">{{el.venueLat}}</p>
+                    <p class="col-3">{{el.venueLong}}</p>
+                </div>
+                <a href={{el.link}}>{{el.link}}</a>
+                <p>{{el.description}}</p>
+                <div class="row">
+                    <p class="col-3">{{el.date}}</p>
+                    <p class="col-3">{{el.time}}</p>
+                    <p class="col-3">{{el.minAge}}</p>
+                </div>
+                <p>{{el.email}}</p>
+            </div>
+            <div class="col-4">
+                <img src={{el.image}}>
+            </div>
+        </div>
+    </div>
+</div>
 <table class="table" mdbTable>
         <thead>
           <tr>
             <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+            <th scope="col">View</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -11,6 +39,8 @@
             <th scope="row">{{el.name}}</th>
             <td>{{el.date}}</td>
             <td>{{el.status}}</td>
+            <td><button class="btn btn-info viewDelete" (click)="toggleView(el.id)">View</button></td>
+            <td><button class="btn btn-danger viewDelete" (click)="removeEvent(el.id)">Delete</button></td>
           </tr>
         </tbody>
       </table>
