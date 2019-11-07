@@ -23,6 +23,9 @@ import { MyComponent } from './partners/my/my.component';
 import { ProfileComponent } from './partners/profile/profile.component';
 import { AddListingComponent } from './partners/add-listing/add-listing.component';
 import { TeamWebportalComponent } from './team-webportal/team-webportal.component';
+import { TagCenterComponent } from './tag-center/tag-center.component';
+import { TeamConsoleComponent } from './team-console/team-console.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { TeamWebportalComponent } from './team-webportal/team-webportal.componen
     MyComponent,
     ProfileComponent,
     AddListingComponent,
-    TeamWebportalComponent
+    TeamWebportalComponent,
+    TagCenterComponent,
+    TeamConsoleComponent,
+    SignInComponent
     ],
   imports: [
     BrowserModule,

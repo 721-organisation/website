@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Tag Center</h1>
+    <form [formGroup]="searchEvents" (ngSubmit)="getWithinDistance(searchEvents.value)">
+        <div class="row">
+            <div class="form-group col-4">
+                <input formControlName="location"  type="text" class="form-control" id="location" placeholder="Enter location">
+            </div>
+            <div class = "form-group col-4">
+                <input formControlName="radius" class="form-control" id="radius" type="text" placeholder="Enter radius">
+            </div>
+            <div class = "form-group col-4">
+                <input formControlName="daysFromNow" class="form-control" id="daysFromNow" type="text" placeholder="Enter days from now">
+            </div>
+        </div>
+        <div class="row">
+            <div class = "form-group col-12">
+                <input formControlName="submit" type="submit" class="col-12 btn btn-info">
+            </div>
+        </div>
+    </form>
+    <div  class="card-column" >
+    <div *ngFor="let event of events">
+        <div class="card">
+            <img class="card-img-top" src={{event.image}}>
+            <div class="card-body">
+                <div class="row">
+                    <h5 class="card-title">{{event.name}}</h5> 
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li><p class="text-muted">{{event.venueName}}</p></li>
+                            <li><p class="text-muted">{{event.date}} {{event.time}}</p></li>
+                            <li><p class="text-muted">{{event.price}}</p></li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <p class="card-text">{{event.description}}</p>
+                    </div>
+                </div>
+                <div class="row" *ngFor="let tag of event.tag">
+                    
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="col-12">
+                    <button class="btn btn-info" href="#">Edit Tags</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

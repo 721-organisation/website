@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { UrlHandlingStrategy } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -129,8 +130,36 @@ export class ApiHandlerService {
     let finalUrl = this.url + "requestedEvents/"+id+"?access_token="+access_token;
     return this.http.delete<string>(finalUrl);
   }
+
+  updateNewExplore(access_token: string, radius: string, daysFromNow: string, location: string){
+    let finalUrl = this.url + "events/updateNew?access_token="+access_token;
+    let newHttpOptions = {
+      headers: new HttpHeaders({
+        'cache-control': 'no-cache',
+        'Connection': 'keep-alive',
+        'accept-encoding': 'gzip, deflate',
+        'Accept': '*/*',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    };
+
+    const body = new HttpParams()
+    .set('radius', radius)
+    .set('daysFromNow', daysFromNow)
+    .set('explore', 'true')
+    .set('location', location);
+
+    return this.http.put<string>(finalUrl, body.toString(), newHttpOptions);
+  }
+
+  getWithinDistance(access_token: string, radius: string, daysFromNow: string, location: string){
+    let finalUrl = this.url + "events/getWithinDistance?radius="+radius+"&daysFromNow="+daysFromNow+"&explore=true&location="+encodeURIComponent(location)+"&access_token="+access_token;
+    return this.http.get<string>(finalUrl);
+  }
+
   getLocationInformation(address: string): Observable<any>{
     let finalUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA7MxC0c6PPV6HXw5lTmcN_5dW-I84MRbQ";
     return this.http.get<string>(finalUrl);
   }
+
 }

@@ -1,0 +1,25 @@
+.card-column {
+  @media (min-width: 0px) and (max-width: 768px) {
+    column-count: 1;
+  }
+  @media (min-width: 768px) and (max-width: 992px) {
+    column-count: 2;
+  }
+  @media (min-width: 992px) and (max-width: 1200px) {
+    column-count: 2;
+  }
+  @media (min-width: 1200px) {
+    column-count: 3;
+  }
+  column-gap: 1.20em;
+  .card {
+    display: inline-block;
+    width: 100%;
+  }
+}
+.card {
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0,0.25);
+  margin-bottom: 1.20em;
+  border-radius: 6px;
+}

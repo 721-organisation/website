@@ -10,40 +10,19 @@ import { FormsModule, FormGroup, ReactiveFormsModule, Validators, FormBuilder } 
   styleUrls: ['./become-a-partner.component.less']
 })
 export class BecomeAPartnerComponent implements OnInit {
-  signInForm: FormGroup;
   signUpForm: FormGroup;
   errorText: string;
   signUpErrorText: string;
 
   constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private router: Router, fb: FormBuilder) { 
-    this.signInForm = fb.group({
-      email: ["", Validators.required],
-      password: ["", Validators.required]
-  });
+
   this.signUpForm = fb.group({
     email: ["", Validators.required],
     password: ["", Validators.required],
     confirmPassword: ["", Validators.required]
 });
   }
-  onSignIn(data) {
-    let email = data.email;
-    let password = data.password;
 
-    this.apiHandler
-    .login(email, password).subscribe(
-      res => {
-        let authorization = JSON.parse(JSON.stringify(res)).id;
-        let userId = JSON.parse(JSON.stringify(res)).userId;
-        this.CookieService.set('authorization-token', authorization);
-        this.CookieService.set('email', email);
-        this.CookieService.set('user-id', userId);
-        this.router.navigate(['/partners']);
-    },
-    err => {
-      this.errorText = "Incorrect email or password";
-    });
-  }
 
   onSignUp(data){
     let email = data.email;
@@ -74,6 +53,12 @@ export class BecomeAPartnerComponent implements OnInit {
     }
   }
   ngOnInit() {
+    if((this.CookieService.get('authorization-token'))){
+      this.router.navigate(['/partners']);
+    }
+  }
+
+  ngOnChanges(){
     if((this.CookieService.get('authorization-token'))){
       this.router.navigate(['/partners']);
     }
