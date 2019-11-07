@@ -50,7 +50,12 @@ export class ProfileComponent implements OnInit {
         this.typeOfService = data.typeOfService;
       },
       err => {
-        // On Failure
+        // On Failure create a new partner
+        this.ApiHandlerService.createPartner(this.authorization_token, this.userId).subscribe(
+          res =>{
+            this.Router.navigate(['/partners']);
+          }
+        );
       }
     );
   }

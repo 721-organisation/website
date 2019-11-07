@@ -26,12 +26,23 @@ export class PartnersComponent implements OnInit {
     this.email = this.CookieService.get('email');
     this.ApiHandlerService.getPartnerInfo(this.authorization_token, this.userId).subscribe(
       res => {
-        let data = JSON.parse(JSON.stringify(res));
-        this.companyName = data.companyName;
-        this.location = data.Location;
-        this.typeOfService = data.typeOfService;
+        let data = JSON.parse(JSON.stringify(res))[0];
+        console.log(data);
+        if(data != null){
+          this.companyName = data.companyName;
+          this.location = data.Location;
+          this.typeOfService = data.typeOfService;
+        } else{
+          // create a new partner
+          this.ApiHandlerService.createPartner(this.authorization_token, this.userId).subscribe(
+            res =>{
+              this.Router.navigate(['/partners']);
+            }
+          );
+        }
       },
       err => {
+        this.CookieService.set('authorization-token', '');
         this.Router.navigate(['/become-a-partner']);
       }
     );

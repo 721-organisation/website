@@ -53,7 +53,7 @@ export class ApiHandlerService {
   createPartner (access_token: string, id: string): Observable<string>{
     let finalUrl = this.url + "Partners?access_token="+access_token;
     let body = {
-      "id": id
+      "userId": id
     }
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
