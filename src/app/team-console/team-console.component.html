@@ -1,8 +1,22 @@
 <div class="container">
 <h1>Team Console</h1>
 <app-sign-in *ngIf="!signedIn"></app-sign-in>
-<div *ngIf="signedIn" class="row">
-    <button  routerLink="/team/requested-events" class="col-6 btn btn-success">Requested Events Panel</button>
-    <button routerLink="/team/tag-center" class="col-6 btn btn-success">Tag Panel</button>
+<div *ngIf="signedIn">
+    <div class="row">
+        <button  routerLink="/team/requested-events" class="col-5 btn btn-success">Requested Events Panel</button>
+        <div class="col-2"></div>
+        <button routerLink="/team/tag-center" class="col-5 btn btn-success">Tag Panel</button>
+    </div>
+    <div class="row">
+        <p class="col-3">Total number of swipes: {{swipes}}</p>
+        <p class="col-3">Total number of events: {{events}}</p>
+        <p class="col-3">Total number of partners: {{partners}}</p>
+        <p class="col-3">Total number of users: {{users}}</p>
+    </div>
+    <div class="row">
+        <div id="eventSourcesChart" class="col-6"></div>
+        <div id="swipeChart" class="col-6"></div>
+    </div>
 </div>
+
 </div>

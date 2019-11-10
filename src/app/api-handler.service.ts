@@ -38,11 +38,25 @@ export class ApiHandlerService {
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
 
-  count (): Observable<string>{
+  countSwipes (): Observable<string>{
     let finalUrl = this.url + "EventProfiles/count"
     return this.http.get<string>(finalUrl);
   }
 
+  countEvents(access_token: string): Observable<string>{
+    let finalUrl = this.url + "Events/count?access_token=" + access_token;
+    return this.http.get<string>(finalUrl);
+  }
+
+  countPartners(access_token: string): Observable<string>{
+    let finalUrl = this.url + "Partners/count?access_token=" + access_token;
+    return this.http.get<string>(finalUrl);
+  }
+
+  countUsers(access_token: string): Observable<string>{
+    let finalUrl = this.url + "Profiles/count?access_token=" + access_token;
+    return this.http.get<string>(finalUrl);
+  }
   getRequested (access_token: string, email: string): Observable<string>{
     let finalUrl = this.url + "RequestedEvents";
     let filter = encodeURIComponent('{"where":{"email":"'+email+'"}}');
@@ -51,6 +65,21 @@ export class ApiHandlerService {
     return this.http.get<string>(finalUrl);
   }
 
+  countEventFromProvider(access_token: string, provider: string): Observable<string>{
+    let finalUrl = this.url + "Events/count";
+    let filter = encodeURIComponent('{"eventSourceTag":"'+provider+'"}');
+    finalUrl = finalUrl + "?where=" + filter;
+    finalUrl = finalUrl + "&access_token=" + access_token;
+    return this.http.get<string>(finalUrl); 
+  }
+
+  countSwipeFromDecision(access_token: string, swipe: boolean): Observable<string>{
+    let finalUrl = this.url + "eventProfiles/count";
+    let filter = encodeURIComponent('{"swipe":"'+swipe+'"}');
+    finalUrl = finalUrl + "?where=" + filter;
+    finalUrl = finalUrl + "&access_token=" + access_token;
+    return this.http.get<string>(finalUrl); 
+  }
   createPartner (access_token: string, id: string): Observable<string>{
     let finalUrl = this.url + "Partners?access_token="+access_token;
     let body = {
