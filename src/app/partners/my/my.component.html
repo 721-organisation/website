@@ -31,6 +31,7 @@
           <tr>
             <th *ngFor="let head of headElements" scope="col">{{head}} </th>
             <th scope="col">View</th>
+            <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
@@ -40,6 +41,7 @@
             <td>{{el.date}}</td>
             <td>{{el.status}}</td>
             <td><button class="btn btn-info viewDelete" (click)="toggleView(el.id)">View</button></td>
+            <td><button class="btn btn-warning viewDelete" (click)="toggleView(el.id)">Edit</button></td>
             <td><button class="btn btn-danger viewDelete" (click)="removeEvent(el.id)">Delete</button></td>
           </tr>
         </tbody>
