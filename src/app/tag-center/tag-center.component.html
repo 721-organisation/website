@@ -38,13 +38,17 @@
                         <p class="card-text">{{event.description}}</p>
                     </div>
                 </div>
+                <div *ngFor="let tag of event.tag">
+                    <p>{{tag}}</p>
+                </div>
                 <div class="row" *ngFor="let tag of event.tag">
                     
                 </div>
             </div>
             <div class="card-footer">
-                <div class="col-12">
-                    <button class="btn btn-info" href="#">Edit Tags</button>
+                <div class="row">
+                    <input class="form-control col-8" [id]=event.id type="text">
+                    <button class="btn btn-info col-4" (click)="addTag(event.id)" href="#">Add Tag</button>
                 </div>
             </div>
         </div>

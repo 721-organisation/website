@@ -110,6 +110,12 @@ export class ApiHandlerService {
     let finalUrl = this.url + "Partners/update?where=%7B%22userId%22%3A%22"+userId+"%22%7D&access_token="+access_token;
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
+
+  addTag(access_token: string, id: string, body: Object): Observable<string>{
+    let finalUrl = this.url + "Events/update?where=%7B%22id%22%3A%22"+id+"%22%7D&access_token="+access_token;
+    return this.http.post<string>(finalUrl, body, this.httpOptions);
+  }
+
   changePassword(access_token: string, oldPasswordS: string, newPasswordS: string): Observable<string>{
     let finalUrl = this.url + "Users/change-password?access_token="+access_token;
     let newHttpOptions = {

@@ -125,7 +125,7 @@ export class TeamConsoleComponent implements OnInit {
 
     this.apiHandler.countUsers(this.authorization_token).subscribe(
       res => {
-        this.users = JSON.parse(JSON.stringify(res)).count;
+        this.swipes = JSON.parse(JSON.stringify(res)).count;
       }
     );
   }
