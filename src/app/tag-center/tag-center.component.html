@@ -19,39 +19,41 @@
         </div>
     </form>
     <div  class="card-column" >
-    <div *ngFor="let event of events">
-        <div class="card">
-            <img class="card-img-top" src={{event.image}}>
-            <div class="card-body">
-                <div class="row">
-                    <h5 class="card-title">{{event.name}}</h5> 
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li><p class="text-muted">{{event.venueName}}</p></li>
-                            <li><p class="text-muted">{{event.date}} {{event.time}}</p></li>
-                            <li><p class="text-muted">{{event.price}}</p></li>
-                        </ul>
+        <div *ngFor="let event of events">
+            <div class="card">
+                <img class="card-img-top" src={{event.image}}>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title">{{event.name}}</h5> 
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <p class="card-text">{{event.description}}</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><p class="text-muted">{{event.venueName}}</p></li>
+                                <li><p class="text-muted">{{event.date}} {{event.time}}</p></li>
+                                <li><p class="text-muted">{{event.price}}</p></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <p class="card-text">{{event.description}}</p>
+                        </div>
+                    </div>
+                    <div *ngFor="let tag of event.tag">
+                        <p>{{tag}}</p>
+                    </div>
+                    <div class="row" *ngFor="let tag of event.tag">
+                        
                     </div>
                 </div>
-                <div *ngFor="let tag of event.tag">
-                    <p>{{tag}}</p>
-                </div>
-                <div class="row" *ngFor="let tag of event.tag">
-                    
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="row">
-                    <input class="form-control col-8" [id]=event.id type="text">
-                    <button class="btn btn-info col-4" (click)="addTag(event.id)" href="#">Add Tag</button>
+                <div class="card-footer">
+                    <div class="row">
+                        <input class="form-control col-8" [id]=event.id type="text">
+                        <button class="btn btn-info col-4" (click)="addTag(event.id)" href="#">Add Tag</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>

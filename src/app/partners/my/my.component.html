@@ -1,48 +1,80 @@
 <button class="btn addListing" (click)="toggleAddListing()">+ Add Listing</button>
-<add-listing *ngIf="addListingDisplay"></add-listing>
+<div *ngIf="addListingDisplay">
+  <add-listing></add-listing>
+  <hr>
+</div>
 <div *ngFor="let el of requestedEvents">
-<div *ngIf="viewEvent == el.id">
-        <div class="row">
-            <div class="col-8">
-                <h3>{{el.name}}</h3>
-                <p>{{el.eventSourceId}}</p>
+  <div *ngIf="viewEvent == el.id">
+    <div class="row">
+        <div class="col-8">
+          <h3>{{el.name}}</h3>
+          <p>{{el.eventSourceId}}</p>
+          <div class="row">
+            <p class="col-6">{{el.venueName}}</p>
+            <p class="col-3">{{el.venueLat}}</p>
+            <p class="col-3">{{el.venueLong}}</p>
+          </div>
+          <a href={{el.link}}>{{el.link}}</a>
+          <p>{{el.description}}</p>
+          <div class="row">
+            <p class="col-3">{{el.date}}</p>
+            <p class="col-3">{{el.time}}</p>
+            <p class="col-3">{{el.minAge}}</p>
+          </div>
+          <p>{{el.email}}</p>
+        </div>
+        <div class="col-4">
+          <img src={{el.image}}>
+        </div>
+    </div>
+    <hr>
+  </div>
+</div>
+<div class="card-column">
+    <div *ngFor="let event of requestedEvents">
+        <div class="card">
+            <img class="card-img-top" src={{event.image}}>
+            <div class="card-body">
                 <div class="row">
-                    <p class="col-6">{{el.venueName}}</p>
-                    <p class="col-3">{{el.venueLat}}</p>
-                    <p class="col-3">{{el.venueLong}}</p>
+                    <div class="col-12">
+                        <h5 class="card-title">{{event.name}}</h5> 
+                    </div>
                 </div>
-                <a href={{el.link}}>{{el.link}}</a>
-                <p>{{el.description}}</p>
                 <div class="row">
-                    <p class="col-3">{{el.date}}</p>
-                    <p class="col-3">{{el.time}}</p>
-                    <p class="col-3">{{el.minAge}}</p>
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li><p class="text-muted">{{event.venueName}}</p></li>
+                            <li><p class="text-muted">{{event.date}} {{event.time}}</p></li>
+                            <li><p class="text-muted">{{event.price}}</p></li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <p class="card-text">{{event.description}}</p>
+                    </div>
                 </div>
-                <p>{{el.email}}</p>
+                <div *ngFor="let tag of event.tag">
+                    <p>{{tag}}</p>
+                </div>
+                <div class="row" *ngFor="let tag of event.tag">
+                    
+                </div>
             </div>
-            <div class="col-4">
-                <img src={{el.image}}>
+            <div class="event-status bg-{{event.status}}">
+                <h5 class="text-center">{{event.status}}</h5>
+              </div>
+            <div class="card-footer">
+                <div class="row">
+                  <div class="col">
+                    <button class="btn btn-info viewDelete" (click)="toggleView(event.id)">View</button>
+                  </div>
+                  <div class="col">
+                    <button class="btn btn-warning viewDelete" (click)="toggleView(event.id)">Edit</button>
+                  </div>
+                  <div class="col">
+                    <button class="btn btn-danger viewDelete" (click)="removeEvent(event.id)">Delete</button>
+                  </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<table class="table" mdbTable>
-        <thead>
-          <tr>
-            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
-            <th scope="col">View</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr mdbTableCol *ngFor="let el of requestedEvents">
-            <th scope="row">{{el.name}}</th>
-            <td>{{el.date}}</td>
-            <td>{{el.status}}</td>
-            <td><button class="btn btn-info viewDelete" (click)="toggleView(el.id)">View</button></td>
-            <td><button class="btn btn-warning viewDelete" (click)="toggleView(el.id)">Edit</button></td>
-            <td><button class="btn btn-danger viewDelete" (click)="removeEvent(el.id)">Delete</button></td>
-          </tr>
-        </tbody>
-      </table>

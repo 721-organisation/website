@@ -12,3 +12,54 @@
 img {
     max-width: 100%;
 }
+
+.bg-Pending {
+    background-color: #007bff;
+}
+.bg-Accepted {
+    background-color: #28a745;
+}
+.bg-Rejected {
+    background-color: #dc3545;
+}
+.event-status {
+    color: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.card-column {
+    @media (min-width: 0px) and (max-width: 768px) {
+      column-count: 1;
+    }
+    @media (min-width: 768px) and (max-width: 992px) {
+      column-count: 2;
+    }
+    @media (min-width: 992px) and (max-width: 1200px) {
+      column-count: 2;
+    }
+    @media (min-width: 1200px) {
+      column-count: 3;
+    }
+    column-gap: 1.20em;
+    .card {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+  .card {
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.25);
+    margin-bottom: 1.20em;
+    border-radius: 6px;
+    h5 {
+        margin-bottom: 0;
+    }
+    ul {
+        margin-bottom: 0;
+    }
+    p {
+        margin-bottom: 0;
+    }
+  }
