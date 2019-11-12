@@ -1,7 +1,7 @@
 <div class="container">
 <h1>Team Console</h1>
 <app-sign-in *ngIf="!signedIn"></app-sign-in>
-<div >
+<div *ngIf="signedIn">
     <div class="row">
         <button  routerLink="/team/requested-events" class="col-5 btn btn-success">Requested Events Panel</button>
         <div class="col-2"></div>
