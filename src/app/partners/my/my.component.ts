@@ -51,6 +51,8 @@ export class MyComponent implements OnInit {
     if(id != this.viewEvent){
       this.viewEvent = id;
       this.editEvent = "";
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     }else{
       this.viewEvent = "";
     }
@@ -60,6 +62,8 @@ export class MyComponent implements OnInit {
     if(id != this.editEvent){
       this.editEvent = id;
       this.viewEvent = "";
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     }else{
       this.editEvent = "";
     }
