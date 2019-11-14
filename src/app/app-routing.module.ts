@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PartnersComponent } from './partners/partners.component';
 import { TeamWebportalComponent } from './team-webportal/team-webportal.component';
 import { TeamConsoleComponent } from './team-console/team-console.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'team', component: TeamConsoleComponent},
   { path: 'team/requested-events', component: TeamWebportalComponent},
   { path: 'team/tag-center', component: TagCenterComponent},
+  { path: 'team/messages', component: MessagesComponent},
   { path: '**', component: PageNotFoundComponent}
 ];
 

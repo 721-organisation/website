@@ -195,9 +195,20 @@ export class ApiHandlerService {
     return this.http.get<string>(finalUrl);
   }
 
+  getMessages(access_token: string): Observable<string>{
+    let finalUrl = this.url + "messages";
+    return this.http.get<string>(finalUrl);
+  }
+
+  sendMessage(body: object): Observable<string>{
+    let finalUrl = this.url + "messages";
+    return this.http.post<string>(finalUrl, body);
+  }
+
   getLocationInformation(address: string): Observable<any>{
     let finalUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA7MxC0c6PPV6HXw5lTmcN_5dW-I84MRbQ";
     return this.http.get<string>(finalUrl);
   }
+
 
 }

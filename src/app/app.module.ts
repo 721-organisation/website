@@ -26,6 +26,7 @@ import { TeamWebportalComponent } from './team-webportal/team-webportal.componen
 import { TagCenterComponent } from './tag-center/tag-center.component';
 import { TeamConsoleComponent } from './team-console/team-console.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     TeamWebportalComponent,
     TagCenterComponent,
     TeamConsoleComponent,
-    SignInComponent
+    SignInComponent,
+    MessagesComponent
     ],
   imports: [
     BrowserModule,
