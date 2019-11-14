@@ -29,6 +29,53 @@
     </div>
     <hr>
   </div>
+  <div *ngIf="editEvent == el.id">
+    <form [formGroup]="editListingForm" (ngSubmit)="editListing(editListingForm.value, el.eventSourceId)">
+        <div class="form-group">
+            <label for="eventName">Event name:</label>
+            <input formControlName="eventName"  type="text" class="form-control" id="eventName" value="{{el.name}}">
+        </div>
+        <div class="form-group">
+            <label for="venueName">Venue name:</label>
+            <input formControlName="venueName"  type="text" class="form-control" id="venueName" value="{{el.venueName}}">
+        </div>
+        <div class="form-group">
+            <label for="venueAddress">Venue address:</label>
+            <input formControlName="venueAddress"  type="text" class="form-control" id="venueName">
+        </div>
+        <div class="form-group">
+            <label for="eventDescription">Event description:</label>
+            <input formControlName="eventDescription" type="text" class="form-control" id="eventDescription" value="{{el.description}}">
+        </div>
+        <div class="form-group ">
+            <label for="eventLink">Event link:</label>
+            <input formControlName="eventLink"  type="text" class="form-control" id="eventLink" value="{{el.link}}">
+        </div>
+        <div class="form-group ">
+            <label for="eventImageUrl">Image:</label>
+            <input formControlName="eventImageUrl" type="text" class="form-control" id="eventImageUrl" aria-describedby="imageUrlHelp" value="{{el.image}}">
+            <small id="imageUrlHelp" class="form-text text-muted">If you can't see an image in the card's thubnail below your image hasn't been uploaded properly.</small>
+        </div>
+        <div class="form-group">
+            <label for="eventDate">Event date:</label>
+            <input formControlName="eventDate"  type="date" class="form-control" id="eventDate" value="{{el.date}}">
+        </div>
+        <div class="form-group">
+            <label for="eventTime">Event time:</label>
+            <input formControlName="eventTime" type="time" class="form-control" id="eventTime" value="{{el.time}}">
+        </div>
+        <div class="form-group">
+            <label for="eventPrice">Event price:</label>
+            <input formControlName="eventPrice"  type="text" class="form-control" id="eventPrice" value="{{el.price}}">
+        </div>
+        <div class="form-group">
+            <label for="eventPrice">Event minAge:</label>
+            <input formControlName="eventMinAge" type="text" class="form-control" id="eventMinAge" value="{{el.minAge}}">
+        </div>
+        <button type="submit" class="btn btn-primary col-12">Submit</button>
+        <hr>
+        </form>
+      </div>
 </div>
 <div class="card-column">
     <div *ngFor="let event of requestedEvents">
@@ -68,8 +115,8 @@
                   <div class="col">
                     <button class="btn btn-info viewDelete" (click)="toggleView(event.id)">View</button>
                   </div>
-                  <div class="col">
-                    <button class="btn btn-warning viewDelete" (click)="toggleView(event.id)">Edit</button>
+                  <div *ngIf="event.status == 'Pending'" class="col">
+                    <button class="btn btn-warning viewDelete" (click)="toggleEdit(event.id)">Edit</button>
                   </div>
                   <div class="col">
                     <button class="btn btn-danger viewDelete" (click)="removeEvent(event.id)">Delete</button>
