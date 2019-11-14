@@ -34,7 +34,7 @@ export class TeamConsoleComponent implements OnInit {
     this.userId = this.CookieService.get('user-id');
     this.email = this.CookieService.get('email');
 
-    if((this.CookieService.get('authorization-token'))){
+    if(this.CookieService.get('authorization-token')){
       this.signedIn = true;
     }
 
@@ -113,21 +113,28 @@ export class TeamConsoleComponent implements OnInit {
 
     this.apiHandler.countEvents(this.authorization_token).subscribe(
       res => {
-        this.events = JSON.parse(JSON.stringify(res)).count;
+        this.apiHandler.countUsers(this.authorization_token).subscribe(
+          re => {
+            this.apiHandler.countPartners(this.authorization_token).subscribe(
+              r => {
+                this.apiHandler.countUsers(this.authorization_token).subscribe(
+                  resu => {
+                    this.swipes = JSON.parse(JSON.stringify(re)).count;
+                    this.events = JSON.parse(JSON.stringify(res)).count;
+                    this.partners = JSON.parse(JSON.stringify(r)).count;
+                    this.users =  JSON.parse(JSON.stringify(resu)).count;
+                  }
+                )
+              }
+            );
+          }
+        );
       }
     );
 
-    this.apiHandler.countPartners(this.authorization_token).subscribe(
-      res => {
-        this.partners = JSON.parse(JSON.stringify(res)).count;
-      }
-    );
 
-    this.apiHandler.countUsers(this.authorization_token).subscribe(
-      res => {
-        this.swipes = JSON.parse(JSON.stringify(res)).count;
-      }
-    );
+
+
   }
 
 }
