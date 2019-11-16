@@ -1,5 +1,14 @@
 <div class="container">
-    <h1>Team Webportal</h1>
+    <div class="row">
+        <div class="col-9">
+            <h1>Team Webportal</h1>
+        </div>
+        <div class="col-3">
+            <a routerLink="/team" class="text-right signOut">
+                <p>Back</p>
+            </a>
+        </div>
+    </div>
     <div class="row">
         <button [class]="pending ? 'col-4 btnSelected' : 'col-4 btn'"  (click)="toggle('pending')">Pending</button>
         <button [class]="accepted ? 'col-4 btnSelected' : 'col-4 btn'" (click)="toggle('accepted')">Accepted</button>
