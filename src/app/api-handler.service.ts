@@ -205,6 +205,11 @@ export class ApiHandlerService {
     return this.http.post<string>(finalUrl, body);
   }
 
+  deleteRequestedMessageFromId(access_token: string, id: string): Observable<string>{
+    let finalUrl = this.url + "messages/"+id+"?access_token="+access_token;
+    return this.http.delete<string>(finalUrl);
+  }
+
   getLocationInformation(address: string): Observable<any>{
     let finalUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA7MxC0c6PPV6HXw5lTmcN_5dW-I84MRbQ";
     return this.http.get<string>(finalUrl);

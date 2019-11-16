@@ -13,7 +13,7 @@ export class MessagesComponent implements OnInit {
   authorization_token: string;
   userId: string;
   email: string;
-  constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private router: Router) {
+  constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private Router: Router) {
     this.authorization_token = this.CookieService.get('authorization-token');
     this.userId = this.CookieService.get('user-id');
     this.email = this.CookieService.get('email');
@@ -27,5 +27,13 @@ export class MessagesComponent implements OnInit {
       }
     );
   }
-
+  removeMessage(id) {
+    this.apiHandler.deleteRequestedMessageFromId(this.authorization_token, id).subscribe(
+      res => {
+        location.reload();
+      },err => {
+        // Error
+      }
+    );
+  }
 }
