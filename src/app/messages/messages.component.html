@@ -9,22 +9,31 @@
             </a>
         </div>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>From</th>
-                <th>Subject</th>
-                <th>Message</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tr *ngFor="let message of messages">
-            <td>{{message.timeStamp | date : 'MMMM d h:mm'}}</td>
-            <td>{{message.email}}</td>
-            <td>{{message.subject}}</td>
-            <td>{{message.data}}</td>
-            <td> <button class="btn btn-danger viewDelete" (click)="removeMessage(message.id)">Delete</button></td>
-        </tr>
-    </table>
+    <hr>
+    <div class="card-column">
+        <div *ngFor="let message of messages">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h6 class="card-title"><strong>From:</strong> {{message.email}}</h6> 
+                            <h6 class="card-title"><strong>Subject:</strong> {{message.subject}}</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-muted">
+                            <p>{{message.data}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-danger viewDelete" (click)="removeMessage(message.id)">Delete</button>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
