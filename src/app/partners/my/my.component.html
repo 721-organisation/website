@@ -100,12 +100,9 @@
                     </div>
                 </div>
                 <h5 *ngIf="event.tag">Tags:</h5>
-                <div *ngFor="let tag of event.tag">
-                    <p>{{tag}}</p>
-                </div>
-                <div class="row" *ngFor="let tag of event.tag">
-                    
-                </div>
+                <span class="badge badge-info" *ngFor="let tag of event.tag">
+                  {{tag}}
+                </span>
             </div>
             <div class="event-status bg-{{event.status}}">
                 <h5 class="text-center">{{event.status}}</h5>

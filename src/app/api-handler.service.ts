@@ -115,6 +115,10 @@ export class ApiHandlerService {
     let finalUrl = this.url + "Events/update?where=%7B%22id%22%3A%22"+id+"%22%7D&access_token="+access_token;
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
+  removeTag(access_token: string, id: string, body: Object): Observable<string>{
+    let finalUrl = this.url + "Events/update?where=%7B%22id%22%3A%22"+id+"%22%7D&access_token="+access_token;
+    return this.http.post<string>(finalUrl, body, this.httpOptions);
+  }
   editRequestedEvent(access_token: string, eventSourceId: string, body: object): Observable<string>{
     let finalUrl = this.url + "requestedEvents/update?where=%7B%22eventSourceId%22%3A%22"+eventSourceId+"%22%7D&access_token="+access_token;
     return this.http.post<string>(finalUrl, body, this.httpOptions);

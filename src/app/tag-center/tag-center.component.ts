@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { FormsModule, FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms'
 import { transformAll } from '@angular/compiler/src/render3/r3_ast';
+import { filter } from 'minimatch';
 
 @Component({
   selector: 'app-tag-center',
@@ -84,6 +85,20 @@ export class TagCenterComponent implements OnInit {
         );
       }
     }
-
+  }
+  removeTag(id, tag){
+    for (let i = 0; i < this.events.length; i++){
+      if(this.events[i].id == id){
+        let event = this.events[i];
+        let tags = [];
+        tags = event.tag.filter(function(filter_tag) {
+          return !(filter_tag === tag);
+        });
+        let body = {"tag": tags};
+        this.apiHandler.removeTag(this.authorization_token, id, body).subscribe(
+          res=>{location.reload();}
+        );
+      }
+    }
   }
 }
