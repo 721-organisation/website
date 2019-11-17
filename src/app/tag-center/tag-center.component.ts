@@ -24,8 +24,8 @@ export class TagCenterComponent implements OnInit {
   constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private router: Router, fb: FormBuilder) { 
     this.searchEvents = fb.group({
       location: ["", Validators.required],
-      radius: [0, Validators.required],
-      daysFromNow: [0, Validators.required]
+      radius: ["", Validators.required],
+      daysFromNow: ["", Validators.required]
   });
   }
 
