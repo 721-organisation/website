@@ -113,20 +113,16 @@ export class TeamConsoleComponent implements OnInit {
 
     this.apiHandler.countEvents(this.authorization_token).subscribe(
       res => {
-        this.apiHandler.countUsers(this.authorization_token).subscribe(
-          re => {
+
             this.apiHandler.countPartners(this.authorization_token).subscribe(
               r => {
                 this.apiHandler.countUsers(this.authorization_token).subscribe(
                   resu => {
-                    this.swipes = JSON.parse(JSON.stringify(re)).count;
                     this.events = JSON.parse(JSON.stringify(res)).count;
                     this.partners = JSON.parse(JSON.stringify(r)).count;
                     this.users =  JSON.parse(JSON.stringify(resu)).count;
                   }
                 )
-              }
-            );
           }
         );
       }
