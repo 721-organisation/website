@@ -10,10 +10,11 @@
         </div>
     </div>
     <div class="row">
-        <button [class]="pending ? 'col-4 btnSelected' : 'col-4 btn'"  (click)="toggle('pending')">Pending</button>
-        <button [class]="accepted ? 'col-4 btnSelected' : 'col-4 btn'" (click)="toggle('accepted')">Accepted</button>
-        <button [class]="rejected ? 'col-4 btnSelected' : 'col-4 btn'" (click)="toggle('rejected')">Rejected</button>
+        <button [class]="pending ? 'col-4 btnSelected' : 'col-4 btn pending'"  (click)="toggle('pending')">Pending</button>
+        <button [class]="accepted ? 'col-4 btnSelected' : 'col-4 btn accepted'" (click)="toggle('accepted')">Accepted</button>
+        <button [class]="rejected ? 'col-4 btnSelected' : 'col-4 btn rejected'" (click)="toggle('rejected')">Rejected</button>
     </div>
+    <br>
     <ul>
     <li *ngFor="let requestedEvent of requestedEvents">
         <div class="row">
