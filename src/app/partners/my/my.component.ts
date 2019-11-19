@@ -41,6 +41,25 @@ export class MyComponent implements OnInit {
       res => {
         console.log(res);
         this.requestedEvents = JSON.parse(JSON.stringify(res));
+        for(let event of this.requestedEvents){
+          if(event.status == 'Accepted'){
+            this.apiHandler.countSwipesOfEvent(this.authorization_token, event.eventSourceId).subscribe(
+              res => {
+                event.swipes = JSON.parse(JSON.stringify(res)).count;
+                this.apiHandler.countSwipesOfEventType(this.authorization_token, event.eventSourceId, true).subscribe(
+                  swipeYes => {
+                    event.swipesYes = JSON.parse(JSON.stringify(swipeYes)).count;
+                    this.apiHandler.countSwipesOfEventType(this.authorization_token, event.eventSourceId, false).subscribe(
+                      swipeNo => {
+                        event.swipesNo = JSON.parse(JSON.stringify(swipeNo)).count;
+                      }
+                    );
+                  }
+                );
+              }
+            );
+          }
+        }
       },
       err => {
         // On Failure

@@ -209,6 +209,16 @@ export class ApiHandlerService {
     return this.http.post<string>(finalUrl, body);
   }
 
+  countSwipesOfEvent(access_token: string, id: string): Observable<string>{
+    let finalUrl = this.url +"eventProfiles/count?where=%7B%22eventSourceId%22%3A%22"+id+"%22%7D&access_token="+access_token;
+    return this.http.get<string>(finalUrl);
+  }
+
+  countSwipesOfEventType(access_token: string, id: string, type: boolean): Observable<string>{
+    let finalUrl = this.url +"eventProfiles/count?where=%7B%22swipe%22%3A%22"+type+"%22%2C%22eventSourceId%22%3A%22"+id+"%22%7D&access_token="+access_token;
+    return this.http.get<string>(finalUrl);
+  }
+
   deleteRequestedMessageFromId(access_token: string, id: string): Observable<string>{
     let finalUrl = this.url + "messages/"+id+"?access_token="+access_token;
     return this.http.delete<string>(finalUrl);

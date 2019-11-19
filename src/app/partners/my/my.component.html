@@ -106,7 +106,14 @@
             </div>
             <div class="event-status bg-{{event.status}}">
                 <h5 class="text-center">{{event.status}}</h5>
-              </div>
+            </div>
+            <div *ngIf="event.status == 'Accepted'" class="container">
+                <p>Total swipes: {{event.swipes}}</p>
+                <div class="container">
+                    <p>Swipes yes: {{event.swipesYes}}</p>
+                    <p>Swipes no: {{event.swipesNo}}</p>
+                </div>
+            </div>
             <div class="card-footer">
                 <div class="row">
                   <div class="col">
