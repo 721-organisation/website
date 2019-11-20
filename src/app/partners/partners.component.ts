@@ -47,12 +47,7 @@ export class PartnersComponent implements OnInit {
       }
     );
   }
-  signOut(){
-    this.CookieService.set('authorization-token', "");
-    this.CookieService.set('email', "");
-    this.CookieService.set('user-id', "");
-    this.Router.navigate(['/become-a-partner']);
-  }
+
   toggle(selected) {
     if(selected == 'my721') {
       this.my721 = true;
