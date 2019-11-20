@@ -11,9 +11,18 @@
     background-color: #FF6E6E;
     color: white;
 }
-
+.mobile-text-alignment {
+    @media (max-width: 576px) {
+        text-align: center;
+    } 
+    @media (min-width: 576px) {
+        text-align: left;
+    }
+}
 .section {
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .fitted-img {
