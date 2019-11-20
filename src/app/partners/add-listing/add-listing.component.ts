@@ -33,7 +33,8 @@ export class AddListingComponent implements OnInit {
   ngOnInit() {
     this.authorization_token = this.CookieService.get('authorization-token');
     this.userId = this.CookieService.get('user-id');
-    this.email = this.CookieService.get('email');  }
+    this.email = this.CookieService.get('email');  
+  }
 
   addListing(data){
     this.apiHandler.getLocationInformation(data.venueAddress).subscribe(

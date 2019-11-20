@@ -46,6 +46,7 @@ export class PartnersComponent implements OnInit {
         this.Router.navigate(['/become-a-partner']);
       }
     );
+
   }
 
   toggle(selected) {

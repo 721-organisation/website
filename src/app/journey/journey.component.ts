@@ -12,4 +12,6 @@ export class JourneyComponent implements OnInit {
   ngOnInit() {
   }
 
+  
+
 }
