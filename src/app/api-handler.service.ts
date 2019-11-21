@@ -229,5 +229,10 @@ export class ApiHandlerService {
     return this.http.get<string>(finalUrl);
   }
 
+  getInstragramImages(): Observable<any>{
+    let finalUrl = "https://www.instagram.com/721app/?__a=1";
+    return this.http.get<string>(finalUrl);
+  }
+
 
 }

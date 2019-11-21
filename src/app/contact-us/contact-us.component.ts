@@ -9,7 +9,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class ContactUsComponent implements OnInit {
   contactUsForm: FormGroup;
-
+  images = [];
   constructor(fb: FormBuilder, private apiHandler: ApiHandlerService) {
     this.contactUsForm = fb.group({
       email: ["", Validators.required],
@@ -19,6 +19,14 @@ export class ContactUsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.apiHandler.getInstragramImages().subscribe(
+      res => {
+        let response = res.graphql.user.edge_owner_to_timeline_media.edges;
+        for(let image of response){
+          this.images.push(image.node.thumbnail_resources[2].src);
+        }
+      }
+    );
   }
 
   contactUs(data){

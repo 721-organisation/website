@@ -20,8 +20,21 @@
                             <label for="message">Message</label>
                             <textarea class="form-control" formControlName="message" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn col-12 btn-primary">Submit</button>
                     </form>
+            </div>
+        </div>
+        <h1>Instagram feed</h1>
+        <hr>
+        <div class="row">
+            <div id="small-img" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center">
+                <ul>
+                    <div *ngFor="let image of images">
+                        <li>
+                            <img  class="img-responsive inline-block" src="{{image}}">
+                        </li>
+                    </div>
+                </ul>
             </div>
         </div>
     </div>
