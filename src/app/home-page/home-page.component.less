@@ -6,6 +6,11 @@ h2 img {
     display: flex;
     align-items: center;
 }
+.small-section {
+    display: flex;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
 .title {
     padding-top: 5%;
     background-image: url('../../assets/titleBgImage.png');
@@ -24,24 +29,49 @@ h2 img {
     font-size: 4em;
 }
 .white {
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
+    @media (max-width: 576px) {
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+    @media (min-width: 576px) {
+        padding-top: 2.5%;
+        padding-bottom: 2.5%;
+    }
     background-color: white;
     color: #FF6E6E;
+    a {
+        color: #FF6E6E
+    }
 }
 
 .red {
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
+    @media (max-width: 576px) {
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+    @media (min-width: 576px) {
+        padding-top: 2.5%;
+        padding-bottom: 2.5%;
+    }
     background-color: #FF6E6E;
     color: white;
 }
 
 .pink {
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
+    @media (max-width: 576px) {
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+    @media (min-width: 576px) {
+        padding-top: 2.5%;
+        padding-bottom: 2.5%;
+    }
     background-color: #FEDADA;
     color: #545454;
+}
+
+.reviews h2{
+    font-size: 3em;
 }
 
 .features img {
