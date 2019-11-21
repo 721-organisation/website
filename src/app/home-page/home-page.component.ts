@@ -16,5 +16,19 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  contactUs(){
+    let body_email = (<HTMLInputElement>document.getElementById('iphoneEmail')).value
+    let body = 
+    {
+      email: body_email,
+      subject: 'IPHONE USER',
+      data: 'INTERESTED IN IPHONE BETA',
+      timeStamp: Date.now()
+    }
+    this.apiHandler.sendMessage(body).subscribe(
+      res => {
+        location.reload;
+      }
+    );
+  }
 }

@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="section white journey">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row d-block text-center"><h1 class="text-center">721 Journey</h1></div>
                 <journey></journey>
             </div>
@@ -63,39 +63,42 @@
                 <reviews></reviews>
             </div>
         </div>
-        <div class="tryNow section white">
+        <div class="tryNow section white mobile-text-alignment">
             <div class="container">
-            <div class="row">
+                <div class="row d-block">
+                    <h2 class="text-center">Work with us!</h2>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6"><h3>Become a partner</h3></div>
+                    <div class="col-xs-12 col-sm-6">
+                        <p>Interested in using 721 App to promote your events? Or is it travel related experiences? Sign up to try out our platform made for 721 partners.</p>
+                        
+                        <p>Try it now, whilst it's free: <strong><a class="white" routerLink="/become-a-partner">Sign Up -></a></strong></p>
+                        
+                    </div>
+                </div>
+                <hr>
+                <br>
+                <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <h2>Try now it's free</h2>
-                    <a href='https://play.google.com/store/apps/details?id=com.travel721&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+                    <h3>Try out the App! It's free!</h3>
+                    <h4><a href='https://play.google.com/store/apps/details?id=com.travel721&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a></h4>
                     <hr class="d-xs-block d-sm-none">
                 </div>
                 <div class="col-xs-12 col-sm-6">
-                    <h2>iPhone user? Not to worry.</h2>
+                    <h3>iPhone user? Not to worry.</h3>
                     <p>Sign up for early release</p>
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
+                            <label for="iphoneEmail">Email address</label>
                             <div class="row">
-                            <input type="email" class="form-control col-xs-12 col-sm-10 mb-10" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <button type="submit" class="btn btn-danger col-xs-12 col-sm-2 mb-2">Submit</button>
+                            <input type="email" class="form-control col-xs-12 col-sm-10 mb-10" id="iphoneEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                            <button type="submit" (click)=contactUs() class="btn btn-danger col-xs-12 col-sm-2 mb-2">Submit</button>
                             </div>
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     </form>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="red section partner">
-            <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6"><h2>Become a partner</h2></div>
-                <div class="col-xs-12 col-sm-6">
-                    <p>Interested in using 721 App to promote your events? Or is it travel related experiences? Sign up to try out our platform made for 721 partners.</p>
-                    <p>Try it now, whilst it's free</p>
-                    <a routerLink="/become-a-partner">Sign In/Sign Up</a>
                 </div>
             </div>
             </div>
