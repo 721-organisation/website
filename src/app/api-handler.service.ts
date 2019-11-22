@@ -80,17 +80,18 @@ export class ApiHandlerService {
     finalUrl = finalUrl + "&access_token=" + access_token;
     return this.http.get<string>(finalUrl); 
   }
-  createPartner (access_token: string, id: string): Observable<string>{
+  createPartner (access_token: string, id: string, companyName: string): Observable<string>{
     let finalUrl = this.url + "Partners?access_token="+access_token;
     let body = {
-      "userId": id
+      "userId": id,
+      "companyName": companyName
     }
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
 
   getPartnerInfo (access_token: string, id: string): Observable<string>{
-    let finalUrl = this.url + "Partners";
-    let filter = encodeURIComponent('{"where":{"userId":"'+id+'"}}');
+    let finalUrl = this.url + "Partners/";
+    let filter = encodeURIComponent('{"where":{"userId": {"like":"'+id+'"}}}');
     finalUrl = finalUrl + "?filter=" + filter;
     finalUrl = finalUrl + "&access_token=" + access_token;
     return this.http.get<string>(finalUrl);

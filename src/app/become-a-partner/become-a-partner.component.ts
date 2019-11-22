@@ -39,7 +39,8 @@ export class BecomeAPartnerComponent implements OnInit {
                 this.CookieService.set('authorization-token', authorization);
                 this.CookieService.set('email', email);
                 this.CookieService.set('user-id', userId);
-                this.apiHandler.createPartner(authorization, userId).subscribe(result =>{
+                this.apiHandler.createPartner(authorization, userId, "submitCompanyName").subscribe(results =>{
+                  location.reload();
                   this.router.navigate(['/partners']);
                 });
           });

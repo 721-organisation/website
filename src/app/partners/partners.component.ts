@@ -27,16 +27,15 @@ export class PartnersComponent implements OnInit {
     this.ApiHandlerService.getPartnerInfo(this.authorization_token, this.userId).subscribe(
       res => {
         let data = JSON.parse(JSON.stringify(res))[0];
-        console.log(data);
         if(data != null){
           this.companyName = data.companyName;
           this.location = data.Location;
           this.typeOfService = data.typeOfService;
         } else{
           // create a new partner
-          this.ApiHandlerService.createPartner(this.authorization_token, this.userId).subscribe(
-            res =>{
-              this.Router.navigate(['/partners']);
+          this.ApiHandlerService.createPartner(this.authorization_token, this.userId, "PleaseSubmitACompanyName").subscribe(
+            results =>{
+              location.reload();
             }
           );
         }
