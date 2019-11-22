@@ -14,6 +14,7 @@ export class AddListingComponent implements OnInit {
   authorization_token: string;
   userId: string;
   email: string;
+  logoImageUrl: any;
   constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private router: Router, fb: FormBuilder) { 
     this.addListingForm = fb.group({
       venueName: ["", Validators.required],
@@ -33,7 +34,11 @@ export class AddListingComponent implements OnInit {
   ngOnInit() {
     this.authorization_token = this.CookieService.get('authorization-token');
     this.userId = this.CookieService.get('user-id');
-    this.email = this.CookieService.get('email');  
+    this.email = this.CookieService.get('email');   
+    this.apiHandler.getPartnerInfo(this.authorization_token, this.userId).subscribe(result => {
+      this.logoImageUrl = JSON.parse(JSON.stringify(result))[0].logoImageUrl;
+      alert(this.logoImageUrl)
+    });
   }
 
   addListing(data){
@@ -46,6 +51,9 @@ export class AddListingComponent implements OnInit {
           for (var i = 0; i < string_length; i++) {
             let rnum = Math.floor(Math.random() * chars.length);
             randomstring += chars.substring(rnum, rnum + 1);
+          }
+          if (!checkURL(data.eventImageUrl)) {
+            data.eventImageUrl = this.logoImageUrl;
           }
           let body = {
             "name": data.eventName,
@@ -75,6 +83,8 @@ export class AddListingComponent implements OnInit {
           );
         }
       );
-
+      function checkURL(url: string) {
+        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+      }
   }
 }

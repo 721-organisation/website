@@ -19,7 +19,9 @@ export class ProfileComponent implements OnInit {
   editCompanyNameForm: FormGroup;
   editLocationForm: FormGroup;
   editTypeOfServiceForm: FormGroup;
+  editLogoForm: FormGroup;
   changePasswordForm: FormGroup;
+  logoImageUrl: any;
 
   constructor(private CookieService: CookieService, private Router: Router, private ApiHandlerService: ApiHandlerService, fb: FormBuilder) { 
     this.editCompanyNameForm = fb.group({
@@ -30,6 +32,9 @@ export class ProfileComponent implements OnInit {
     });
     this.editTypeOfServiceForm = fb.group({
       typeOfService: ["", Validators.required]
+    });
+    this.editLogoForm = fb.group({
+      logoImageUrl: ["", Validators.required]
     });
     this.changePasswordForm = fb.group({
       currentPassword: ["", Validators.required],
@@ -48,6 +53,7 @@ export class ProfileComponent implements OnInit {
         this.companyName = data.companyName;
         this.location = data.Location;
         this.typeOfService = data.typeOfService;
+        this.logoImageUrl = data.logoImageUrl;
       },
       err => {
         // On Failure
@@ -55,15 +61,13 @@ export class ProfileComponent implements OnInit {
     );
   }
   editCompanyName(data) {
-    console.log(data);
     let newCompanyName = data.companyName;
     let body = {
       "companyName" : newCompanyName
     };
-    console.log(body);
     this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe(
       res =>{
-        // On Success
+        location.reload();
       },
       err => {
         // On Failure
@@ -78,7 +82,7 @@ export class ProfileComponent implements OnInit {
     };
     this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe(
       res =>{
-        // On Success
+        location.reload();
       },
       err => {
         // On Failure
@@ -93,7 +97,21 @@ export class ProfileComponent implements OnInit {
     };
     this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe(
       res =>{
-        // On Success
+        location.reload();
+      },
+      err => {
+        // On Failure
+      }
+    );
+  }
+  editLogo(data) {
+    let newLogo = data.logoImageUrl;
+    let body = {
+      "logoImageUrl" : newLogo
+    };
+    this.ApiHandlerService.editPartnerInformation(this.authorization_token, this.userId, body).subscribe(
+      res =>{
+        location.reload();
       },
       err => {
         // On Failure
@@ -105,7 +123,7 @@ export class ProfileComponent implements OnInit {
     if(data.newPassword === data.confirmNewPassword){
       this.ApiHandlerService.changePassword(this.authorization_token, data.currentPassword, data.newPassword).subscribe(
         res =>{
-          // On Success
+          location.reload();
         },
         err => {
           // On Failure

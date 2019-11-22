@@ -107,8 +107,10 @@ export class ApiHandlerService {
     let finalUrl = this.url +  "requestedEvents?access_token="+access_token;
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
-  editPartnerInformation(access_token: string,userId: string, body: Object): Observable<string>{
-    let finalUrl = this.url + "Partners/update?where=%7B%22userId%22%3A%22"+userId+"%22%7D&access_token="+access_token;
+  editPartnerInformation(access_token: string,id: string, body: Object): Observable<string>{
+    let finalUrl = this.url + "Partners/update"
+    finalUrl = finalUrl + "?where=%7B%22userId%22%3A%7B%22like%22%3A%20%22"+id+"%22%7D%7D";
+    finalUrl = finalUrl + "&access_token=" + access_token;
     return this.http.post<string>(finalUrl, body, this.httpOptions);
   }
 
