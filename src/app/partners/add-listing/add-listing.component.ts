@@ -37,7 +37,6 @@ export class AddListingComponent implements OnInit {
     this.email = this.CookieService.get('email');   
     this.apiHandler.getPartnerInfo(this.authorization_token, this.userId).subscribe(result => {
       this.logoImageUrl = JSON.parse(JSON.stringify(result))[0].logoImageUrl;
-      alert(this.logoImageUrl)
     });
   }
 
@@ -52,7 +51,7 @@ export class AddListingComponent implements OnInit {
             let rnum = Math.floor(Math.random() * chars.length);
             randomstring += chars.substring(rnum, rnum + 1);
           }
-          if (!checkURL(data.eventImageUrl)) {
+          if (data.eventImageUrl == "") {
             data.eventImageUrl = this.logoImageUrl;
           }
           let body = {
@@ -83,8 +82,6 @@ export class AddListingComponent implements OnInit {
           );
         }
       );
-      function checkURL(url: string) {
-        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-      }
+
   }
 }
