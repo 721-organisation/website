@@ -3,6 +3,7 @@ import { ApiHandlerService } from '../api-handler.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import * as CanvasJS from '../../assets/canvasjs.min.js';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-team-console',
@@ -24,9 +25,33 @@ export class TeamConsoleComponent implements OnInit {
   events: number;
   partners: number;
   users: number;
+  teamMessages: any;
+  addMessageForm: FormGroup;
 
-  constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private router: Router) {
+  constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private router: Router, fb: FormBuilder) {
+    this.addMessageForm = fb.group({
+      message: ["", Validators.required],
+  });
+  }
 
+  onAddMessage(data){
+    let body = {
+      message: data.message,
+      timestamp: (new Date()).toLocaleDateString()
+    }
+    this.apiHandler.addTeamMessage(this.authorization_token, body).subscribe(
+      res => {
+        location.reload();
+      }
+    );
+  }
+
+  removeMessage(id){
+    this.apiHandler.deleteTeamMessageById(this.authorization_token, id).subscribe(
+      res => {
+        location.reload();
+      }
+    );
   }
 
   ngOnInit() {
@@ -121,6 +146,11 @@ export class TeamConsoleComponent implements OnInit {
                     this.events = JSON.parse(JSON.stringify(res)).count;
                     this.partners = JSON.parse(JSON.stringify(r)).count;
                     this.users =  JSON.parse(JSON.stringify(resu)).count;
+                    this.apiHandler.getTeamMessages(this.authorization_token).subscribe(
+                      messages => {
+                        this.teamMessages  = JSON.parse(JSON.stringify(messages));
+                      }
+                    );
                   }
                 )
           }

@@ -227,6 +227,20 @@ export class ApiHandlerService {
     return this.http.delete<string>(finalUrl);
   }
 
+  getTeamMessages(access_token: string): Observable<string>{
+    let finalUrl = this.url + "teamMessages/?access_token="+access_token;
+    return this.http.get<string>(finalUrl);
+  }
+
+  addTeamMessage(access_token: string, body: object): Observable<string>{
+    let finalUrl = this.url + "teamMessages/?access_token="+access_token;
+    return this.http.post<string>(finalUrl, body);
+  }
+
+  deleteTeamMessageById(access_token: string, id: string): Observable<string>{
+    let finalUrl = this.url + "teamMessages/"+id+"?access_token="+access_token;
+    return this.http.delete<string>(finalUrl);
+  }
   getLocationInformation(address: string): Observable<any>{
     let finalUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA7MxC0c6PPV6HXw5lTmcN_5dW-I84MRbQ";
     return this.http.get<string>(finalUrl);

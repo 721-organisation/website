@@ -7,16 +7,43 @@
         <button routerLink="/team/tag-center" class="col-4 btn btn-success tag-center">Tag Panel</button>
         <button routerLink="/team/messages" class="col-4 btn btn-success messages">Messages</button>
     </div>
+    <br>
+    <div class="border border-danger rounded">
+        <h2>Send a message to partners</h2>
+        <form [formGroup]="addMessageForm" (ngSubmit)="onAddMessage(addMessageForm.value)">
+            <div class="form-group">
+                <input formControlName="message" type="text" class="form-control" id="message" placeholder="Enter message">
+            </div>
+            <button type="submit" class="btn btn-primary col-12">Submit</button>
+        </form>
+        <h3>Messages:</h3>
+        <hr>
+        <div *ngFor="let message of teamMessages">
+            <div class="row">
+                <div class="col-8">
+                    <p>{{message.timestamp}}</p>
+                </div>
+                <div class="col-4">
+                        <button class="btn btn-danger deleteBtn" (click)="removeMessage(message.id)">Delete</button>                        
+                    </div>
+            </div>
+            <p>{{message.message}}</p>
+            <hr>
+        </div>
+    </div>
+    <br>
     <div class="row">
         <p class="col-3 text-center">Total number of swipes: {{swipes}}</p>
         <p class="col-3 text-center">Total number of events: {{events}}</p>
         <p class="col-3 text-center">Total number of partners: {{partners}}</p>
         <p class="col-3 text-center">Total number of users: {{users}}</p>
     </div>
+
     <div class="row">
         <div id="eventSourcesChart" class="col-6"></div>
         <div id="swipeChart" class="col-6"></div>
     </div>
+
 </div>
 
 </div>
