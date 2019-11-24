@@ -54,7 +54,12 @@ export class AddListingComponent implements OnInit {
             randomstring += chars.substring(rnum, rnum + 1);
           }
           if (data.eventImageUrl == "") {
-            data.eventImageUrl = this.logoImageUrl;
+            if(this.logoImageUrl != undefined) {
+              data.eventImageUrl = this.logoImageUrl;
+            }else{
+              alert("You have not submitted an image and you don't have a logo image set");
+              data.eventImageUrl = "https://countrylakesdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.jpg";
+            }
           }
           let body = {
             "name": data.eventName,
