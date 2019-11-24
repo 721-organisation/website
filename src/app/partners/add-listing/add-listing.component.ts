@@ -15,6 +15,7 @@ export class AddListingComponent implements OnInit {
   userId: string;
   email: string;
   logoImageUrl: any;
+  companyName: any;
   constructor(private apiHandler: ApiHandlerService, private CookieService: CookieService, private router: Router, fb: FormBuilder) { 
     this.addListingForm = fb.group({
       venueName: ["", Validators.required],
@@ -37,6 +38,7 @@ export class AddListingComponent implements OnInit {
     this.email = this.CookieService.get('email');   
     this.apiHandler.getPartnerInfo(this.authorization_token, this.userId).subscribe(result => {
       this.logoImageUrl = JSON.parse(JSON.stringify(result))[0].logoImageUrl;
+      this.companyName = (JSON.parse(JSON.stringify(result))[0].companyName).toUpperCase();
     });
   }
 
@@ -56,7 +58,7 @@ export class AddListingComponent implements OnInit {
           }
           let body = {
             "name": data.eventName,
-            "eventSourceTag": "BUSINESS",
+            "eventSourceTag": this.companyName,
             "eventSourceId": randomstring,
             "venueName": data.venueName,
             "venueLat": addressLatLong.lat,
