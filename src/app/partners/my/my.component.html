@@ -1,12 +1,3 @@
-<div class="border border-danger rounded">
-    <h3>Messages from the 721 team:</h3>
-    <hr>
-    <div *ngFor="let message of teamMessages">
-        <p>{{message.timestamp}}</p>
-        <p>{{message.message}}</p>
-        <hr>
-    </div>
-</div>
 <button class="btn addListing" (click)="toggleAddListing()">+ Add Listing</button>
 <div *ngIf="addListingDisplay">
   <add-listing></add-listing>
@@ -110,7 +101,7 @@
                 </div>
                 <h5 *ngIf="event.tag">Tags:</h5>
                 <span class="badge badge-info" *ngFor="let tag of event.tag">
-                  {{tag}}
+                    {{tag}}
                 </span>
             </div>
             <div class="event-status bg-{{event.status}}">

@@ -18,12 +18,18 @@ export class PartnersComponent implements OnInit {
   companyName: string;
   location: string;
   typeOfService: string;
+  teamMessages: any;
   constructor(private CookieService: CookieService, private Router: Router, private ApiHandlerService: ApiHandlerService) { }
 
   ngOnInit() {
     this.authorization_token = this.CookieService.get('authorization-token');
     this.userId = this.CookieService.get('user-id');
     this.email = this.CookieService.get('email');
+    this.ApiHandlerService.getTeamMessages(this.authorization_token).subscribe(
+      messages => {
+        this.teamMessages = JSON.parse(JSON.stringify(messages));
+      }
+    );
     this.ApiHandlerService.getPartnerInfo(this.authorization_token, this.userId).subscribe(
       res => {
         let data = JSON.parse(JSON.stringify(res))[0];

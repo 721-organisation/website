@@ -1,8 +1,21 @@
 <div class=" container">
     <div class="row">
-        <h2 class="col-10">
+        <h2 class="col-12">
             <i>Welcome! {{companyName}}</i>
         </h2>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="team-message">
+                <h3>Most recent messages from the 721 team:</h3>
+                <hr>
+                <div *ngFor="let message of teamMessages">
+                    <p>{{message.message}}</p>
+                    <p class="text-muted">~ {{message.timestamp}}</p>
+                    <hr>
+                </div>
+            </div>    
+        </div>
     </div>
     <div class="row">
         <button [class]="my721 ? 'col-4 my721 btnSelected' : 'col-4 my721 btn'"  (click)="toggle('my721')">My 721</button>

@@ -13,7 +13,6 @@ export class MyComponent implements OnInit {
   addListingDisplay = false;
   headElements = ['Name', 'Date', 'Status'];
   editListingForm: FormGroup;
-  teamMessages: any;
   constructor(private CookieService: CookieService,  private Router: Router, private apiHandler: ApiHandlerService, fb: FormBuilder) { 
     this.editListingForm = fb.group({
       venueName: ["", Validators.required],
@@ -38,11 +37,6 @@ export class MyComponent implements OnInit {
     this.authorization_token = this.CookieService.get('authorization-token');
     this.userId = this.CookieService.get('user-id');
     this.email = this.CookieService.get('email');
-    this.apiHandler.getTeamMessages(this.authorization_token).subscribe(
-      messages => {
-        this.teamMessages = JSON.parse(JSON.stringify(messages));
-      }
-    );
     this.apiHandler.getRequested(this.authorization_token, this.email).subscribe(
       res => {
         console.log(res);
