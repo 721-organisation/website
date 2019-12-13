@@ -80,4 +80,15 @@ export class TeamWebportalComponent implements OnInit {
       }
     );
   }
+  removeEvent(id) {
+    this.ApiHandlerService.deleteRequestedEventFromId(this.authorization_token, id).subscribe(
+      res => {
+        location.reload();
+      },err => {
+        // Error
+      }
+    );
+  }
+  
+  
 }
