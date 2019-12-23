@@ -14,6 +14,8 @@ h2 img {
 .title {
     padding-top: 5%;
     background-image: url('../../assets/titleBgImage.png');
+    max-width: 100%;
+
     color: white;
     background-size:  cover;            
     background-repeat: no-repeat;
@@ -21,10 +23,25 @@ h2 img {
 }
 .title h1{
     font-size: 4em;
+
+    @media (min-width: 576px) {
+        position: absolute;
+        top: 1em;
+        text-align: center;
+        width: 80%;
+    }
 }
 .title h2{
     font-size: 3em;
+
+    @media (min-width: 576px) {
+        position: absolute;
+        top: 3em;
+        text-align: center;
+        width: 80%;
+    }
 }
+
 .journey h1 {
     font-size: 4em;
 }
@@ -38,9 +55,9 @@ h2 img {
         padding-bottom: 2.5%;
     }
     background-color: white;
-    color: #FF6E6E;
+    color: #545454;
     a {
-        color: #FF6E6E;
+        color: #545454;
     }
 }
 
