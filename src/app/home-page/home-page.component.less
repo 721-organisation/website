@@ -2,9 +2,20 @@ h2 img {
     height: 2em;
 }
 .section {
-    min-height: 100vh;
+    @media (max-width: 768px) {
+        height: 100vh;
+    }
+    @media (min-width: 768px) and (max-width: 992px) {
+        height: 120vh;
+    }
+    @media (min-width: 992px) and (max-width: 1200px) {
+        height: 120vh;
+    }
+    @media (min-width: 1200px) {
+        height: 120vh;
+    }
+    max-height: 900px;
     display: flex;
-    align-items: center;
 }
 .small-section {
     display: flex;
@@ -22,28 +33,31 @@ h2 img {
     background-position: center center; 
 }
 .title h1{
-    font-size: 4em;
-
-    @media (min-width: 576px) {
-        position: absolute;
-        top: 1em;
-        text-align: center;
-        width: 80%;
+    font-size: 3em;
+    text-align: center;
+    @media (min-width: 1200px) {
+        font-size: 4em;
     }
 }
 .title h2{
-    font-size: 3em;
-
-    @media (min-width: 576px) {
-        position: absolute;
-        top: 3em;
-        text-align: center;
-        width: 80%;
+    font-size: 2em;
+    text-align: center;
+    @media (min-width: 1200px) {
+        font-size: 2.5em;
     }
 }
 
-.journey h1 {
+.app-intro h1 {
     font-size: 4em;
+}
+.demo {
+    height: 400px;
+    width: auto;
+    border-radius: 6px;
+    border: 1px solid #545454;
+}
+.app-intro h2 {
+    font-size: 2em;
 }
 .white {
     @media (max-width: 576px) {
