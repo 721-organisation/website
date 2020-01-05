@@ -1,33 +1,51 @@
-.white {
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    background-color: white;
-    color: #FF6E6E;
+
+img {
+    width: 100%;
+    margin-bottom: 5px;
 }
-
-
+h3 {
+    padding-top: 70px;
+    padding-bottom: 15px;
+}
+.instagram {
+    color: #545454;
+    hr {
+        border: 0.5px solid #545454;
+    }   
+}
 button{
     background-color: #FF6E6E;
+    color: #ffffff;
     outline:none; 
     border-style: none;
 }
-ul {
-    list-style-type: none;
+.section {
+    @media (max-width: 768px) {
+        height: 100vh;
+    }
+    @media (min-width: 768px) and (max-width: 992px) {
+        height: 120vh;
+    }
+    @media (min-width: 992px) and (max-width: 1200px) {
+        height: 120vh;
+    }
+    @media (min-width: 1200px) {
+        height: 120vh;
+    }
+    max-height: 900px;
 }
-.row li {
-    padding-bottom: 1em;
-}
-@media screen and (min-width: 480px) {
+.title {
+    padding-top: 56px;
+    background-image: url('../../assets/partnersLoginBackground.jpg');
+    max-width: 100%;
 
-    .row li {
-        width: 33.3%;
-        float: left;
-    }
-    img {
-        border: 0 none;
-        display: inline-block;
-        height: auto;
-        max-width: 100%;
-        vertical-align: middle;
-    }
+    color: #ffffff;
+    background-size:  cover;            
+    background-repeat: no-repeat;
+    background-position: center center; 
+}
+.contact-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(150,150,150,0.6);
 }

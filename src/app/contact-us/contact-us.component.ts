@@ -35,6 +35,7 @@ export class ContactUsComponent implements OnInit {
       email: data.email,
       subject: data.subject,
       data: data.message,
+      verified: false,
       timeStamp: Date.now()
     }
     this.apiHandler.sendMessage(body).subscribe(
