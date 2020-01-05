@@ -28,7 +28,20 @@
                     </div>
                 </div>
                 <div class="card-footer">
+                    <div *ngIf="message.verified" class="row">
+                        <hr>
+                        <div class="col-12">
+                            <h6 class="card-title"><strong>Verified</strong></h6>
+                        </div>
+                    </div>
+                    <div *ngIf="!message.verified" class="row">
+                        <hr>
+                        <div class="col-12">
+                            <h6 class="card-title"><strong>Not Verified</strong></h6>
+                        </div>
+                    </div>
                     <div class="row">
+                        <hr>
                         <div class="col-6">
                             <a class="btn btn-info" href="mailto:{{message.email}}?Subject=RE: {{message.subject}}&body={{message.data}}">Reply</a>
                         </div>

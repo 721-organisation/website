@@ -29,6 +29,7 @@ import { TeamConsoleComponent } from './team-console/team-console.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { PartContactUsComponent } from './partners/part-contact-us/part-contact-us.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
     TeamConsoleComponent,
     SignInComponent,
     MessagesComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    PartContactUsComponent
     ],
   imports: [
     BrowserModule,
