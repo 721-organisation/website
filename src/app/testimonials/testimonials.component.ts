@@ -11,6 +11,7 @@
       constructor(config: NgbCarouselConfig) {
         config.showNavigationArrows = false;
         config.showNavigationIndicators = false;
+        config.pauseOnHover = true;
       }
 
       testimonial_1 = true;
