@@ -1,0 +1,47 @@
+<div class="container ">
+    <ngb-carousel #carousel class="testimonials" (slide)="onSlide($event)">
+        <ng-template class="slide" ngbSlide id="testimonial-1">
+            <div class="row">
+                <div class="embed-responsive embed-responsive-16by9 col-xs-12 col-sm-12 col-md-6">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hcuRr5wT4tQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="text-center col-xs-12 col-sm-12 col-md-6">
+                    <p>There is no "waffle" (it’s clear + concise) with 721 app. It's slick, quick to use and has all the relevant information, with a very easy decision making process.</p>
+                    <h2 class="text-muted">Pete</h2>
+                    <h4 class="text-muted">Sheffield Technology Parks</h4>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template class="slide" ngbSlide id="testimonial-2">
+            <div class="row">
+                <div class="centered col-xs-12 col-sm-12 col-md-6">
+                    <img src="../../assets/testimonial3.jpeg">
+                </div>
+                <div class="text-center col-xs-12 col-sm-12 col-md-6">
+                    <p>I love the simplicity and ease and how content is easily accessible.</p>
+                    <h2 class="text-muted">Natalie</h2>
+                    <h4 class="text-muted">Business Sheffield</h4>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template class="slide" ngbSlide id="testimonial-3">
+            <div class="row">
+                <div class="centered col-xs-12 col-sm-12 col-md-6">
+                    <img src="../../assets/testimonial2.jpeg">
+                </div>  
+                <div class="text-center col-xs-12 col-sm-12 col-md-6">
+                    <p>I love the app. Visually good, very simple. I think people will value if for its simplicity</p>
+                    <h2 class="text-muted">Tom</h2>
+                    <h4 class="text-muted">Sheffield Technology Park</h4>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+    <div class="carousel-indicators-dots">
+        <ol>
+            <li [class]="testimonial_1 ? 'active' : ''" (click)="selectedSlide('testimonial-1')"></li>
+            <li [class]="testimonial_2 ? 'active' : ''" (click)="selectedSlide('testimonial-2')"></li>
+            <li [class]="testimonial_3 ? 'active' : ''" (click)="selectedSlide('testimonial-3')"></li>
+        </ol>
+    </div>
+</div>

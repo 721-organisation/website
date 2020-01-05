@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material'
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';  
 import { NavbarComponent } from './navbar/navbar.component';
 import { JourneyComponent } from './journey/journey.component';
 import { ReviewsComponent } from './reviews/reviews.component';
@@ -27,7 +28,7 @@ import { TagCenterComponent } from './tag-center/tag-center.component';
 import { TeamConsoleComponent } from './team-console/team-console.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { MessagesComponent } from './messages/messages.component';
-import {CarouselModule} from 'primeng/carousel';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {CarouselModule} from 'primeng/carousel';
     TagCenterComponent,
     TeamConsoleComponent,
     SignInComponent,
-    MessagesComponent
+    MessagesComponent,
+    TestimonialsComponent
     ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import {CarouselModule} from 'primeng/carousel';
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    NgbModule
     ],
   providers: [
     ApiHandlerService,
