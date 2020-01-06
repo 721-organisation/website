@@ -1,30 +1,32 @@
-<div class="partners container">
-    <div class="row">
-        <h2 class="col-12">
-            <i>Welcome! {{companyName}}</i>
-        </h2>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="team-message">
-                <h3>Most recent messages from the 721 team:</h3>
-                <hr>
-                <div *ngFor="let message of teamMessages">
-                    <p>{{message.message}}</p>
-                    <p class="text-muted">~ {{message.timestamp}}</p>
+<div class="partners">
+    <div class="container bordered">
+        <div class="row">
+            <h2 class="col-12">
+                <i>Welcome! {{companyName}}</i>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="team-message">
+                    <h3>Most recent messages from the 721 team:</h3>
                     <hr>
-                </div>
-            </div>    
+                    <div *ngFor="let message of teamMessages">
+                        <p>{{message.message}}</p>
+                        <p class="text-muted">~ {{message.timestamp}}</p>
+                        <hr>
+                    </div>
+                </div>    
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <button [class]="my721 ? 'col-4 my721 btnSelected' : 'col-4 my721 btn'"  (click)="toggle('my721')">My 721</button>
-            <button [class]="profile ? 'col-4 profileSelected btnSelected' : 'col-4 profile btn'" (click)="toggle('profile')">Profile</button>
-            <button [class]="contactUs ? 'col-4 contactUs btnSelected' : 'col-4 contactUs btn'" (click)="toggle('contactUs')">Contact Us</button>
+        <div class="row">
+            <div class="col-12">
+                <button [class]="my721 ? 'col-4 my721 btnSelected' : 'col-4 my721 btn'"  (click)="toggle('my721')">My 721</button>
+                <button [class]="profile ? 'col-4 profileSelected btnSelected' : 'col-4 profile btn'" (click)="toggle('profile')">Profile</button>
+                <button [class]="contactUs ? 'col-4 contactUs btnSelected' : 'col-4 contactUs btn'" (click)="toggle('contactUs')">Contact Us</button>
+            </div>
         </div>
+        <my-721 *ngIf="my721"></my-721>
+        <profile *ngIf="profile"></profile>
+        <app-part-contact-us *ngIf="contactUs" style="padding-top: -2.5%"></app-part-contact-us>
     </div>
-    <my-721 *ngIf="my721"></my-721>
-    <profile *ngIf="profile"></profile>
-    <app-part-contact-us *ngIf="contactUs" style="padding-top: -2.5%"></app-part-contact-us>
 </div>
