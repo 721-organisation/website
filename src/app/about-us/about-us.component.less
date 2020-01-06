@@ -1,16 +1,3 @@
-.white {
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    background-color: white;
-    color: #FF6E6E;
-}
-
-.red {
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    background-color: #FF6E6E;
-    color: white;
-}
 .mobile-text-alignment {
     @media (max-width: 576px) {
         text-align: center;
@@ -21,27 +8,40 @@
 }
 
 .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
     @media (max-width: 768px) {
-        height: 100vh;
+        min-height: 100vh;
     }
     @media (min-width: 768px) and (max-width: 992px) {
-        height: 120vh;
+        min-height: 100vh;
     }
     @media (min-width: 992px) and (max-width: 1200px) {
-        height: 120vh;
+        min-height: 100vh;
     }
     @media (min-width: 1200px) {
-        height: 120vh;
+        min-height: 100vh;
     }
-    max-height: 900px;
-    display: flex;
 }
+.title {
+    background-image: url('../../assets/partnersLoginBackground.jpg');
+    max-width: 100%;
 
+    color: #ffffff;
+    background-size:  cover;            
+    background-repeat: no-repeat;
+    background-position: center center; 
+}
 .fitted-img {
     align-items: center;
     width: 100%;
 }
-
+.about-us-section {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(150,150,150,0.6);
+}
 .our-story {
     font-family: 'Bradley Hand';
 }

@@ -3,17 +3,19 @@ a {
     text-decoration: underline;
 }
 .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
     @media (max-width: 768px) {
-        height: 100vh;
+        min-height: 100vh;
     }
     @media (min-width: 768px) and (max-width: 992px) {
-        height: 100vh;
+        min-height: 100vh;
     }
     @media (min-width: 992px) and (max-width: 1200px) {
-        height: 100vh;
+        min-height: 100vh;
     }
     @media (min-width: 1200px) {
-        height: 100vh;
+        min-height: 100vh;
     }
     position: relative;
 }
@@ -26,7 +28,6 @@ a {
     }
 }
 .title {
-    padding-top: 56px;
     background-image: url('../../assets/partnersLoginBackground.jpg');
     max-width: 100%;
 
@@ -41,7 +42,7 @@ a {
     margin: auto;
     position: absolute;
     padding: 25px;
-    bottom: 5%;
+    bottom: 56px;
     text-align: center;
     background-color: rgba(150,150,150,0.6);
 }
@@ -49,5 +50,5 @@ img {
     width: 100%;
 }
 .news-item {
-    margin: 60px;
+    margin: 56px;
 }
