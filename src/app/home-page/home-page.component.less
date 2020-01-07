@@ -21,8 +21,11 @@ h2 img {
     padding-top: 10vh;
     padding-bottom: 10vh;
 }
+.no-bottom-margin {
+    margin-bottom: 0;
+}
 .title {
-    padding-top: 56px;
+    padding-top: 126px;
     background-image: url('../../assets/titleBgImage.png');
     max-width: 100%;
 
@@ -30,6 +33,19 @@ h2 img {
     background-size:  cover;            
     background-repeat: no-repeat;
     background-position: center center; 
+}
+
+@media (min-width: 576px) {
+    .title-center {
+        position: relative;
+    }
+    .centered {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
 }
 .title h1{
     font-size: 46px;
