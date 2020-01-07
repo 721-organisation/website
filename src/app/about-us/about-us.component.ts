@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-us.component.less']
 })
 export class AboutUsComponent implements OnInit {
-
+  public isCollapsedStory = true;
+  public isCollapsedVision = true;
   constructor() { }
 
   ngOnInit() {
