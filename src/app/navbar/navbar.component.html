@@ -13,7 +13,8 @@
             <a routerLink="/press" class="nav-link" href="#">Press</a>
           </li>
           <li class="nav-item">
-            <a routerLink="/become-a-partner" class="nav-link" href="#">Become a partner</a>
+            <a *ngIf="!companyName" routerLink="/become-a-partner" class="nav-link" href="#">Become a partner</a>
+            <a *ngIf="companyName" routerLink="/partners" class="nav-link" href="#">Partners Portal</a>
           </li>
           <li class="nav-item">
             <a routerLink="/contact-us" class="nav-link" href="#">Contact Us</a>
