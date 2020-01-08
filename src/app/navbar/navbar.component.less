@@ -1,6 +1,18 @@
 .navbar-toggler {
+  @media (max-width: 768px) {
+    background-color: #E8E8E8;
+  }
   background-color: rgb(85, 85, 85);
 } 
 .bg-gradient {
-  background: linear-gradient(rgb(85, 85, 85), transparent);
+  @media (max-width: 768px) {
+    background-color: rgb(85, 85, 85);
+    a {
+      color: #FF6E6E !important;
+    }
+    background-color: #ffffff;
+  }
+  @media (min-width: 768px) {
+    background: linear-gradient(rgb(85, 85, 85), transparent);
+  }
 }
