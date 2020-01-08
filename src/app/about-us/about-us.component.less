@@ -8,8 +8,8 @@
 }
 
 .section {
-    padding-top: 56px;
-    padding-bottom: 56px;
+    padding-top: 112px;
+    padding-bottom: 112px;
     @media (max-width: 768px) {
         min-height: 100vh;
     }
@@ -37,10 +37,15 @@
     width: 100%;
 }
 .about-us-section {
+    @media (min-width: 768px) {
+        position: absolute;
+    }
+    transition: all 0.25s ease;
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
     background-color: rgba(150,150,150,0.6);
+    margin-bottom: 20px;
+    width: 100%;
 }
 .our-story {
     font-family: 'Bradley Hand';
