@@ -28,7 +28,10 @@
     max-width: 100%;
 
     color: #ffffff;
-    background-size:  cover;            
+    background-size:  cover;    
+    @media (max-width: 576px) {        
+        background-attachment: fixed;
+    }
     background-repeat: no-repeat;
     background-position: center center; 
 }

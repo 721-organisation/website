@@ -22,7 +22,7 @@
             <div class="col-12">
                 <button [class]="my721 ? 'col-4 my721 btnSelected' : 'col-4 my721 btn'"  (click)="toggle('my721')">My 721</button>
                 <button [class]="profile ? 'col-4 profileSelected btnSelected' : 'col-4 profile btn'" (click)="toggle('profile')">Profile</button>
-                <button [class]="contactUs ? 'col-4 contactUs btnSelected' : 'col-4 contactUs btn'" (click)="toggle('contactUs')">Contact Us</button>
+                <button [class]="contactUs ? 'col-4 contactUs btnSelected' : 'col-4 contactUs btn'" (click)="toggle('contactUs')">Contact<div class="d-none d-sm-inline-block">&nbsp;Us</div></button>
             </div>
         </div>
         <my-721 *ngIf="my721"></my-721>
