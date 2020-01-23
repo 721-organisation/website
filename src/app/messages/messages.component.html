@@ -1,52 +1,54 @@
-<div class="messages container">
-    <br>
-    <div class="row">
-        <div class="col-9">
-            <h1>Messages</h1>
+<div class="messages">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-9">
+                <h1>Messages</h1>
+            </div>
+            <div class="col-3">
+                <a routerLink="/team" class="text-right signOut">
+                    <p>Back</p>
+                </a>
+            </div>
         </div>
-        <div class="col-3">
-            <a routerLink="/team" class="text-right signOut">
-                <p>Back</p>
-            </a>
-        </div>
-    </div>
-    <hr>
-    <div class="card-column">
-        <div *ngFor="let message of messages">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <h6 class="card-title"><strong>From:</strong> {{message.email}}</h6> 
-                            <h6 class="card-title"><strong>Subject:</strong> {{message.subject}}</h6>
+        <hr>
+        <div class="card-column">
+            <div *ngFor="let message of messages">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="card-title"><strong>From:</strong> {{message.email}}</h6> 
+                                <h6 class="card-title"><strong>Subject:</strong> {{message.subject}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-muted">
+                                <p>{{message.data}}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-muted">
-                            <p>{{message.data}}</p>
+                    <div class="card-footer">
+                        <div *ngIf="message.verified" class="row">
+                            <hr>
+                            <div class="col-12">
+                                <h6 class="card-title"><strong>Verified</strong></h6>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div *ngIf="message.verified" class="row">
-                        <hr>
-                        <div class="col-12">
-                            <h6 class="card-title"><strong>Verified</strong></h6>
+                        <div *ngIf="!message.verified" class="row">
+                            <hr>
+                            <div class="col-12">
+                                <h6 class="card-title"><strong>Not Verified</strong></h6>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="!message.verified" class="row">
-                        <hr>
-                        <div class="col-12">
-                            <h6 class="card-title"><strong>Not Verified</strong></h6>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <hr>
-                        <div class="col-6">
-                            <a class="btn btn-info" href="mailto:{{message.email}}?Subject=RE: {{message.subject}}&body={{message.data}}">Reply</a>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-danger viewDelete" (click)="removeMessage(message.id)">Delete</button>                        
+                        <div class="row">
+                            <hr>
+                            <div class="col-6">
+                                <a class="btn btn-info" href="mailto:{{message.email}}?Subject=RE: {{message.subject}}&body={{message.data}}">Reply</a>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-danger viewDelete" (click)="removeMessage(message.id)">Delete</button>                        
+                            </div>
                         </div>
                     </div>
                 </div>

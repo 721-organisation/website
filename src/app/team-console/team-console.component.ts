@@ -19,6 +19,7 @@ export class TeamConsoleComponent implements OnInit {
   eventBriteEventNo: number;
   ticketMasterEventNo: number;
   businessEventNo: number;
+  muesmentEventNo: number;
   positiveSwipes: number;
   negativeSwipes: number;
   swipes: number;
@@ -76,13 +77,16 @@ export class TeamConsoleComponent implements OnInit {
                 this.apiHandler.countEventFromProvider(this.authorization_token, "TICKETMASTER").subscribe(
                   resu => {
                     this.ticketMasterEventNo = JSON.parse(JSON.stringify(resu)).count;
-                    let eventSourcesChart = new CanvasJS.Chart("eventSourcesChart", {
-                      theme: "light2",
-                      animationEnabled: true,
-                      exportEnabled: true,
-                      title:{
-                        text: "Distribution of event sources"
-                      },
+                    this.apiHandler.countEventFromProvider(this.authorization_token, "MUSEMENT").subscribe(
+                      ressou => {
+                        this.muesmentEventNo = JSON.parse(JSON.stringify(ressou)).count;
+                        let eventSourcesChart = new CanvasJS.Chart("eventSourcesChart", {
+                          theme: "light2",
+                          animationEnabled: true,
+                          exportEnabled: true,
+                          title:{
+                            text: "Distribution of event sources"
+                        },
                       data: [{
                         type: "pie",
                         showInLegend: true,
@@ -92,11 +96,13 @@ export class TeamConsoleComponent implements OnInit {
                           { y: this.skiddleEventNo, name: "Skiddle" },
                           { y: this.eventBriteEventNo, name: "Eventbrite" },
                           { y: this.ticketMasterEventNo, name: "Ticket Master" },
+                          { y: this.muesmentEventNo, name: "Musement"},
                           { y: this.businessEventNo, name: "Partners" }
                         ]
                       }]
                     });
                     eventSourcesChart.render();
+                  });
                 });
             });
         });
