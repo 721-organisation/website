@@ -166,6 +166,14 @@ export class ApiHandlerService {
     return this.http.post<string>(finalUrl, body, this.httpOptions);   
   }
 
+  revokeRequestedEvent(access_token: string, id: string): Observable<string>{
+    let finalUrl = this.url + "requestedEvents/update?where=%7B%22id%22%3A%22"+id+"%22%7D&access_token="+access_token;
+    let body = {
+      "status":"Pending"
+      }
+    return this.http.post<string>(finalUrl, body, this.httpOptions);   
+  }
+
   addEvent(access_token: string, event: object): Observable<string>{
     let finalUrl = this.url + "events?access_token="+access_token;
     return this.http.post<string>(finalUrl, event, this.httpOptions);

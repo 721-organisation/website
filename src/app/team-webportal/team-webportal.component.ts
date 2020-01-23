@@ -73,6 +73,22 @@ export class TeamWebportalComponent implements OnInit {
     );
   }
 
+  revoke(id, event) {
+    this.ApiHandlerService.revokeRequestedEvent(this.authorization_token, id).subscribe(
+      res => {
+        delete event.status;
+        delete event.email;
+        delete event.id;
+        this.ApiHandlerService.addEvent(this.authorization_token, event).subscribe(
+          result => {
+            console.log("event revoked");
+            this.reRender('Accepted');
+          }
+        );
+      }
+    );
+  }
+
   reject(id){
     this.ApiHandlerService.rejectRequestedEvent(this.authorization_token, id).subscribe(
       res => {

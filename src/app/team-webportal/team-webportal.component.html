@@ -48,7 +48,11 @@
                     <button class="btn btn-success col-6" (click)="accept(requestedEvent.id, requestedEvent)">Accept</button>
                     <button class="btn btn-danger col-6" (click)="reject(requestedEvent.id)">Reject</button>
                 </div>
-                <div *ngIf="!pending" class="row">
+                <div *ngIf="accepted" class="row">
+                    <button class="btn btn-view col-6" (click)="revoke(requestedEvent.id, requestedEvent)">Revoke</button>
+                    <button class="btn btn-danger col-6" (click)="removeEvent(requestedEvent.id)">Remove</button>
+                </div>
+                <div *ngIf="rejected" class="row">
                     <button class="btn btn-danger col-12" (click)="removeEvent(requestedEvent.id)">Remove</button>
                 </div>
                 <hr>
